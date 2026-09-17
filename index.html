@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ระบบสำรวจคะแนน Pre-test สตรีวิทยา 2570</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = { corePlugins: { preflight: false } }
-    </script>
+    <script>tailwind.config = { corePlugins: { preflight: false } }</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -29,9 +27,7 @@
             font-size: 16px;
         }
         
-        .header-gradient {
-            background: linear-gradient(135deg, #2a2a72 0%, #009ffd 100%);
-        }
+        .header-gradient { background: linear-gradient(135deg, #2a2a72 0%, #009ffd 100%); }
         
         .input-field {
             border-radius: 0.5rem;
@@ -115,25 +111,6 @@
             text-align: center;
             margin: 2rem 0;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .tab-button {
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: 2px solid transparent;
-            background: #f9fafb;
-            color: #4b5563;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .tab-button.active {
-            background-color: #e0e7ff;
-            color: #4338ca;
-            border-color: #a5b4fc;
         }
         
         .table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -284,6 +261,7 @@
             align-items: center;
             gap: 0.4rem;
         }
+        
         .year-pill {
             padding: 0.5rem 1.15rem;
             border-radius: 9999px;
@@ -299,20 +277,30 @@
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
         }
+        
+        /* ✅ แก้ไข: ปุ่ม active ทั่วไป */
         .year-pill.active {
-            background: linear-gradient(135deg, #2563eb, #3b82f6);
-            color: white;
-            border-color: #2563eb;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+            background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
+            color: white !important;
+            border-color: #2563eb !important;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35) !important;
         }
+        
+        /* ✅ แก้ไข: ปุ่ม "ทั้งหมด" */
         .year-pill.all {
-            background: linear-gradient(135deg, #7c3aed, #a855f7);
-            color: white;
-            border-color: #7c3aed;
+            background: white;
+            color: #6b7280;
+            border-color: #d1d5db;
+        }
+        .year-pill.all:hover {
+            background: #f3f4f6;
+            border-color: #9ca3af;
         }
         .year-pill.all.active {
-            background: linear-gradient(135deg, #6d28d9, #9333ea);
-            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+            background: linear-gradient(135deg, #7c3aed, #a855f7) !important;
+            color: white !important;
+            border-color: #7c3aed !important;
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4) !important;
         }
 
         /* 🆕 Improved Stat Card */
@@ -362,7 +350,6 @@
         .stat-card-new.purple .icon-circle { background: #ede9fe; color: #7c3aed; }
         .stat-card-new.red .icon-circle { background: #fee2e2; color: #dc2626; }
 
-        /* 🆕 Filter Section Cards */
         .filter-group {
             background: white;
             border-radius: 0.625rem;
@@ -382,7 +369,6 @@
             margin-bottom: 0.25rem;
         }
 
-        /* Navigator Styles */
         .navigator-bar {
             background: white;
             border-radius: 0.75rem;
@@ -428,6 +414,104 @@
             box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
         }
         
+        /* 🆕 Analysis Tabs */
+        .analysis-tab {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            background: #f9fafb;
+            color: #4b5563;
+            margin: 0 0.25rem 0.5rem 0.25rem;
+            font-size: 0.875rem;
+        }
+        
+        .analysis-tab:hover {
+            background: #f3f4f6;
+        }
+        
+        .analysis-tab.active {
+            background-color: #e0e7ff;
+            color: #4338ca;
+            border-color: #a5b4fc;
+        }
+        
+        .analysis-tab-content {
+            display: none;
+        }
+        
+        .analysis-tab-content.active {
+            display: block !important;
+        }
+
+        /* 🆕 Comparison Year Dropdown */
+        .comparison-selector {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+            border: 2px solid #fcd34d;
+            border-radius: 0.75rem;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            box-shadow: 0 2px 8px rgba(217, 119, 6, 0.1);
+        }
+        
+        .comparison-selector label {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        
+        .comparison-selector select {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            border: 2px solid #f59e0b;
+            background: white;
+            color: #92400e;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            outline: none;
+            min-width: 220px;
+        }
+        
+        .comparison-selector select:focus {
+            border-color: #d97706;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+        }
+        
+        /* 🆕 Comparison Stat Cards */
+        .comparison-card-selected {
+            border: 3px solid #f59e0b !important;
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3) !important;
+            transform: scale(1.02);
+            transition: all 0.3s ease;
+        }
+        
+        .comparison-card-dimmed {
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+        
+        .comparison-year-label {
+            display: inline-block;
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
         @media print {
             body * { visibility: hidden; }
             .print-section, .print-section * { visibility: visible; }
@@ -445,7 +529,6 @@
         
         @media (min-width: 640px) {
             body { font-size: 16px; }
-            .tab-button { padding: 0.75rem 1.5rem; font-size: 1rem; margin-bottom: 0; }
             .btn { font-size: 1rem; }
             .navigator-btn { padding: 0.75rem 1.5rem; font-size: 1rem; }
         }
@@ -477,8 +560,8 @@
     <div id="message-box" class="fixed top-5 right-5 z-50 w-full max-w-sm"></div>
     
     <!-- Confirmation Modal -->
-    <div id="delete-all-modal" class="confirmation-modal hidden" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:flex;justify-content:center;align-items:center;z-index:1000;">
-        <div class="confirmation-content" style="background:white;padding:2rem;border-radius:1rem;max-width:500px;width:90%;text-align:center;box-shadow:0 10px 25px rgba(0,0,0,0.2);">
+    <div id="delete-all-modal" class="hidden" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:flex;justify-content:center;align-items:center;z-index:1000;">
+        <div style="background:white;padding:2rem;border-radius:1rem;max-width:500px;width:90%;text-align:center;box-shadow:0 10px 25px rgba(0,0,0,0.2);">
             <h3 class="text-xl font-bold text-gray-800 mb-4">ยืนยันการลบข้อมูลทั้งหมด</h3>
             <p class="text-gray-600 mb-6">คุณกำลังจะลบข้อมูลทั้งหมดในระบบ การกระทำนี้ไม่สามารถย้อนกลับได้</p>
             <p class="text-red-600 font-semibold mb-4">พิมพ์ "DELETE ALL" เพื่อยืนยันการลบ</p>
@@ -493,24 +576,12 @@
     <!-- Navigator Bar -->
     <div id="main-navigator" class="max-w-7xl mx-auto mb-4 navigator-bar">
         <div class="navigator-buttons">
-            <button onclick="switchView('form')" class="navigator-btn active">
-                <i class="fas fa-edit mr-2"></i> กรอกข้อมูล
-            </button>
-            <button onclick="switchView('analysis')" class="navigator-btn">
-                <i class="fas fa-calculator mr-2"></i> วิเคราะห์คะแนน
-            </button>
-            <button onclick="switchView('results')" class="navigator-btn">
-                <i class="fas fa-chart-bar mr-2"></i> ผลสำรวจ
-            </button>
-            <button onclick="switchView('dashboard')" class="navigator-btn">
-                <i class="fas fa-chart-pie mr-2"></i> แดชบอร์ด
-            </button>
-            <button onclick="switchView('admin-login')" class="navigator-btn">
-                <i class="fas fa-cog mr-2"></i> Admin
-            </button>
-            <button onclick="switchView('about')" class="navigator-btn">
-                <i class="fas fa-info-circle mr-2"></i> เกี่ยวกับ
-            </button>
+            <button onclick="switchView('form')" class="navigator-btn active"><i class="fas fa-edit mr-2"></i> กรอกข้อมูล</button>
+            <button onclick="switchView('analysis')" class="navigator-btn"><i class="fas fa-calculator mr-2"></i> วิเคราะห์คะแนน</button>
+            <button onclick="switchView('results')" class="navigator-btn"><i class="fas fa-chart-bar mr-2"></i> ผลสำรวจ</button>
+            <button onclick="switchView('dashboard')" class="navigator-btn"><i class="fas fa-chart-pie mr-2"></i> แดชบอร์ด</button>
+            <button onclick="switchView('admin-login')" class="navigator-btn"><i class="fas fa-cog mr-2"></i> Admin</button>
+            <button onclick="switchView('about')" class="navigator-btn"><i class="fas fa-info-circle mr-2"></i> เกี่ยวกับ</button>
         </div>
     </div>
     
@@ -620,7 +691,7 @@
                 
                 <div class="bg-white rounded-xl shadow-md p-4 sm:p-6 mb-6">
                     <h2 class="text-lg sm:text-xl font-bold text-gray-800 mb-4">เป้าหมายการสอบเข้า</h2>
-                    <p class="text-gray-600 mb-4 text-sm sm:text-base" id="target-description">เลือกหลักสูตรที่ต้องการวิเคราะห์เปรียบเทียบกับคะแนนปี 2569 และ 2568</p>
+                    <p class="text-gray-600 mb-4 text-sm sm:text-base" id="target-description">เลือกหลักสูตรที่ต้องการวิเคราะห์เปรียบเทียบ</p>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                         <div id="special-target-section">
@@ -675,36 +746,28 @@
             <div id="about-section" class="hidden">
                 <div class="relative bg-gradient-to-b from-indigo-50 via-white to-gray-50 pt-12 pb-16 lg:pt-16 lg:pb-20 rounded-xl mb-8">
                     <div class="container mx-auto px-6 text-center">
-                        <h2 class="mt-12 text-3xl lg:text-4xl font-bold text-gray-800">
-                            เกี่ยวกับระบบสำรวจคะแนน Pre-test
-                        </h2>
+                        <h2 class="mt-12 text-3xl lg:text-4xl font-bold text-gray-800">เกี่ยวกับระบบสำรวจคะแนน Pre-test</h2>
                         <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                             ผู้ปกครองโปรดกรอกข้อมูลตามความจริง เพื่อเป็นฐานข้อมูลสำหรับวิเคราะห์แนวโน้มผลการสอบ และเก็บเป็นสถิติ ข้อมูลนี้จะช่วยให้น้อง ๆ ที่กำลังเตรียมสอบเข้า ม.1 ได้เห็นแนวทางมากขึ้นค่ะ
                         </p>
                     </div>
                 </div>
 
-                <section id="features" class="bg-white py-12 lg:py-16 rounded-xl">
+                <section class="bg-white py-12 lg:py-16 rounded-xl">
                     <div class="container mx-auto px-6">
-                        <h3 class="text-3xl font-bold text-center text-gray-900 mb-12">
-                            รายละเอียดระบบแบบสำรวจ
-                        </h3>
+                        <h3 class="text-3xl font-bold text-center text-gray-900 mb-12">รายละเอียดระบบแบบสำรวจ</h3>
                         
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                             <div class="bg-gray-50 p-8 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
                                 <div class="flex items-center justify-center h-16 w-16 bg-indigo-100 rounded-full mx-auto mb-6">
                                     <svg class="w-8 h-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M19 16.9A7 7 0 0 1 5 16.9"/>
-                                        <path d="M12 3v14"/>
+                                        <path d="M19 16.9A7 7 0 0 1 5 16.9"/><path d="M12 3v14"/>
                                         <path d="M12 20.9a7 7 0 0 1 0-13.8 7 7 0 0 1 0 13.8z"/>
-                                        <path d="M19 16.9a7 7 0 0 1 0-7.8"/>
-                                        <path d="M5 16.9a7 7 0 0 0 0-7.8"/>
+                                        <path d="M19 16.9a7 7 0 0 1 0-7.8"/><path d="M5 16.9a7 7 0 0 0 0-7.8"/>
                                     </svg>
                                 </div>
                                 <h4 class="text-2xl font-semibold text-center text-indigo-800 mb-3">เก็บข้อมูลเป็นระบบ</h4>
-                                <p class="text-gray-600 text-center">
-                                    เก็บข้อมูลคะแนน Pre-Test อย่างเป็นระบบ แยกตามปีการศึกษาอย่างชัดเจน
-                                </p>
+                                <p class="text-gray-600 text-center">เก็บข้อมูลคะแนน Pre-Test อย่างเป็นระบบ แยกตามปีการศึกษาอย่างชัดเจน</p>
                             </div>
 
                             <div class="bg-gray-50 p-8 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
@@ -717,9 +780,7 @@
                                     </svg>
                                 </div>
                                 <h4 class="text-2xl font-semibold text-center text-indigo-800 mb-3">วิเคราะห์จุดแข็ง-จุดที่ควรเสริม</h4>
-                                <p class="text-gray-600 text-center">
-                                    สรุปผลรวมประเมินคะแนน และวิเคราะห์จุดแข็ง–จุดที่ควรเสริมรายวิชา เพื่อการพัฒนาที่ตรงจุด
-                                </p>
+                                <p class="text-gray-600 text-center">สรุปผลรวมประเมินคะแนน และวิเคราะห์จุดแข็ง–จุดที่ควรเสริมรายวิชา เพื่อการพัฒนาที่ตรงจุด</p>
                             </div>
 
                             <div class="bg-gray-50 p-8 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
@@ -732,9 +793,7 @@
                                     </svg>
                                 </div>
                                 <h4 class="text-2xl font-semibold text-center text-indigo-800 mb-3">Dashboard</h4>
-                                <p class="text-gray-600 text-center">
-                                    แสดง Dashboard สรุปผลคะแนนแบบเรียลไทม์ แยกตามปี เห็นภาพรวมและแนวโน้มได้ทันที
-                                </p>
+                                <p class="text-gray-600 text-center">แสดง Dashboard สรุปผลคะแนนแบบเรียลไทม์ แยกตามปี เห็นภาพรวมและแนวโน้มได้ทันที</p>
                             </div>
                         </div>
                     </div>
@@ -780,11 +839,8 @@
                 <div class="text-center max-w-6xl mx-auto">
                     <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-4">ภาพรวมผลสำรวจคะแนน Pre-test</h2>
                     
-                    <!-- 🆕 Year Filter Bar -->
                     <div class="year-filter-bar">
-                        <span class="year-filter-label">
-                            <i class="fas fa-calendar-alt"></i> เลือกปีการศึกษา:
-                        </span>
+                        <span class="year-filter-label"><i class="fas fa-calendar-alt"></i> เลือกปีการศึกษา:</span>
                         <button class="year-pill all" data-year="all" onclick="setDashboardYear('all', this)">
                             <i class="fas fa-layer-group mr-1"></i> ทั้งหมด
                         </button>
@@ -796,7 +852,6 @@
                         </button>
                     </div>
                     
-                    <!-- Other Filters -->
                     <div class="flex flex-wrap justify-center gap-4 mb-6">
                         <div class="filter-group">
                             <label>ประเภทหลักสูตร</label>
@@ -817,7 +872,6 @@
                         </div>
                     </div>
 
-                    <!-- Stat Cards -->
                     <div class="dashboard-grid">
                         <div class="stat-card-new blue text-center">
                             <div class="icon-circle"><i class="fas fa-users"></i></div>
@@ -871,11 +925,8 @@
                     <span id="data-source-info">กำลังโหลดข้อมูลจาก Firebase...</span>
                 </div>
                 
-                <!-- 🆕 Year Filter Bar -->
                 <div class="year-filter-bar">
-                    <span class="year-filter-label">
-                        <i class="fas fa-calendar-alt"></i> เลือกปีการศึกษา:
-                    </span>
+                    <span class="year-filter-label"><i class="fas fa-calendar-alt"></i> เลือกปีการศึกษา:</span>
                     <button class="year-pill all" data-year="all" onclick="setResultsYear('all', this)">
                         <i class="fas fa-layer-group mr-1"></i> ทั้งหมด
                     </button>
@@ -887,7 +938,6 @@
                     </button>
                 </div>
                 
-                <!-- Other Filters -->
                 <div class="flex flex-wrap justify-center gap-4 mb-6">
                     <div class="filter-group">
                         <label>ประเภทหลักสูตร</label>
@@ -954,8 +1004,8 @@
             <div id="analysis-section" class="hidden">
                 <div class="text-center max-w-6xl mx-auto">
                     <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6 text-yellow-800 rounded-r-lg text-sm sm:text-base">
-                        <h3 class="font-bold">วิเคราะห์คะแนนเปรียบเทียบคะแนนสอบ Pre-test กับคะแนนสอบเข้าจริง (ปี 2569 และ 2568)</h3>
-                        <p>ระบบจะประมวลผลคะแนน Pre-test ของคุณ และเปรียบเทียบกับสถิติคะแนนสอบเข้าจริงปี 2569, 2568 และค่าเฉลี่ย 2 ปี</p>
+                        <h3 class="font-bold"><i class="fas fa-chart-line mr-2"></i>วิเคราะห์คะแนนเปรียบเทียบกับสถิติปี 2569 และ 2568</h3>
+                        <p>เลือกปีที่ต้องการเปรียบเทียบได้จาก Dropdown ด้านล่าง</p>
                     </div>
                     
                     <div class="print-header bg-indigo-50 p-6 rounded-lg mb-6 text-center">
@@ -968,6 +1018,18 @@
                         <h3 class="text-lg font-bold text-blue-800 mb-2">ข้อมูลผู้วิเคราะห์</h3>
                         <p><strong>ชื่อ:</strong> <span id="analysis-nickname">-</span></p>
                         <p><strong>ระดับชั้น:</strong> <span id="analysis-grade">-</span></p>
+                    </div>
+                    
+                    <!-- 🆕 Comparison Year Dropdown -->
+                    <div class="comparison-selector">
+                        <label for="comparison-year-select">
+                            <i class="fas fa-balance-scale"></i> เปรียบเทียบกับ:
+                        </label>
+                        <select id="comparison-year-select" onchange="changeComparisonYear(this.value)">
+                            <option value="2569">📊 ปีการศึกษา 2569</option>
+                            <option value="2568">📊 ปีการศึกษา 2568</option>
+                            <option value="avg" selected>📈 ค่าเฉลี่ย 2 ปี (2568-2569)</option>
+                        </select>
                     </div>
                     
                     <div id="analysis-tabs" class="flex flex-wrap justify-center mb-6"></div>
@@ -1037,11 +1099,8 @@
                         <span id="admin-data-source-info">กำลังโหลดข้อมูลจาก Firebase...</span>
                     </div>
                     
-                    <!-- 🆕 Year Filter Bar for Admin -->
                     <div class="year-filter-bar">
-                        <span class="year-filter-label">
-                            <i class="fas fa-calendar-alt"></i> กรองตามปี:
-                        </span>
+                        <span class="year-filter-label"><i class="fas fa-calendar-alt"></i> กรองตามปี:</span>
                         <button class="year-pill all active" data-year="all" onclick="setAdminYear('all', this)">
                             <i class="fas fa-layer-group mr-1"></i> ทั้งหมด
                         </button>
@@ -1157,33 +1216,37 @@
         let itemsPerPage = 20;
         let filteredExamScores = [];
 
-        // 🆕 Year constants
         const CURRENT_YEAR = 2570;
         const PREVIOUS_YEAR = 2569;
-        const LEGACY_FALLBACK_YEAR = 2569; // ข้อมูลเก่าที่ไม่มี field year ถือเป็น 2569
+        const LEGACY_FALLBACK_YEAR = 2569;
         
-        // 🆕 Current filter states
-        let currentResultsYear = '2570'; // default = ปีปัจจุบัน
+        let currentResultsYear = '2570';
         let currentDashboardYear = '2570';
         let currentAdminYear = 'all';
+        
+        // 🆕 Comparison year selection for analysis
+        let currentComparisonYear = 'avg'; // '2569', '2568', 'avg'
 
         // ==================== COMPARISON DATA ====================
+        // ปี 2568 (ข้อมูลเดิม)
         const comparisonData2024 = {
             'EP': { title: 'หลักสูตร EP (English Program)', max: 168.50, avg: 139.89, min: 119.17, fullScore: 200, chanceThresholds: { high: 145.00, medium: 130.00 }, note: "คำนวณบนสมมุติฐานที่ได้คะแนนในส่วนสัมภาษณ์เต็ม 20 คะแนน" },
             'SMTE': { title: 'หลักสูตร SMTE', max: 77.25, avg: 58.58, min: 47.75, fullScore: 100, chanceThresholds: { high: 62.00, medium: 52.00 }, note: "หลักสูตร SMTE ไม่สอบวิชาภาษาอังกฤษจึงไม่นำมาใช้ในการคำนวณ" },
             'GM': { title: 'หลักสูตร GM (Gifted Math)', max: 90.00, avg: 73.30, min: 66.00, fullScore: 110, chanceThresholds: { high: 75.00, medium: 68.00 }, note: "" },
-            'Normal_In': { title: 'หลักสูตรห้องเรียนปกติ (ในเขต)', max: 58.50, avg: 50.33, min: 41.00, fullScore: 100, chanceThresholds: { high: 53.00, medium: 45.00 }, note: "" },
-            'Normal_Out': { title: 'หลักสูตรห้องเรียนปกติ (นอกเขต)', max: 65.50, avg: 51.41, min: 44.00, fullScore: 100, chanceThresholds: { high: 54.00, medium: 47.00 }, note: "" }
+            'Normal_In': { title: 'หลักสูตรห้องเรียนปกติ (ในเขต)', max: 65.00, avg: 51.14, min: 42.00, fullScore: 100, chanceThresholds: { high: 55.00, medium: 46.00 }, note: "กลุ่มตัวอย่าง 7 คน" },
+            'Normal_Out': { title: 'หลักสูตรห้องเรียนปกติ (นอกเขต)', max: 58.50, avg: 50.33, min: 41.00, fullScore: 100, chanceThresholds: { high: 53.00, medium: 45.00 }, note: "" }
         };
 
+        // ปี 2569 (ข้อมูลที่อัปเดต)
         const comparisonData2025 = {
-            'EP': { title: 'หลักสูตร EP (English Program)', max: 153.5, avg: 123.62, min: 106.17, fullScore: 200, note: "คำนวณบนสมมุติฐานที่ได้คะแนนในส่วนสัมภาษณ์เต็ม 20 คะแนน" },
-            'SMTE': { title: 'หลักสูตร SMTE', max: 73, avg: 63.45, min: 57, fullScore: 100, note: "หลักสูตร SMTE ไม่สอบวิชาภาษาอังกฤษจึงไม่นำมาใช้ในการคำนวณ" },
-            'GM': { title: 'หลักสูตร GM (Gifted Math)', max: 89, avg: 64.06, min: 55.5, fullScore: 110, note: "" },
-            'Normal_In': { title: 'หลักสูตรห้องเรียนปกติ (ในเขต)', max: 78.5, avg: 55.62, min: 46, fullScore: 100, note: "" },
-            'Normal_Out': { title: 'หลักสูตรห้องเรียนปกติ (นอกเขต)', max: 78.5, avg: 55.62, min: 46, fullScore: 100, note: "" }
+            'EP': { title: 'หลักสูตร EP (English Program)', max: 153.5, avg: 123.62, min: 106.17, fullScore: 200, chanceThresholds: { high: 135.00, medium: 115.00 }, note: "คำนวณบนสมมุติฐานที่ได้คะแนนในส่วนสัมภาษณ์เต็ม 20 คะแนน (กลุ่มตัวอย่าง 36 คน)" },
+            'SMTE': { title: 'หลักสูตร SMTE', max: 73, avg: 63.45, min: 57, fullScore: 100, chanceThresholds: { high: 65.00, medium: 58.00 }, note: "หลักสูตร SMTE ไม่สอบวิชาภาษาอังกฤษ (กลุ่มตัวอย่าง 20 คน)" },
+            'GM': { title: 'หลักสูตร GM (Gifted Math)', max: 89, avg: 64.06, min: 55.5, fullScore: 110, chanceThresholds: { high: 70.00, medium: 60.00 }, note: "กลุ่มตัวอย่าง 39 คน" },
+            'Normal_In': { title: 'หลักสูตรห้องเรียนปกติ (ในเขต)', max: 65, avg: 51.14, min: 42, fullScore: 100, chanceThresholds: { high: 55.00, medium: 46.00 }, note: "ข้อมูลที่มีเป็นอันดับที่ 17 ไม่มีข้อมูลอันดับที่ 30 | กลุ่มตัวอย่าง 7 คน" },
+            'Normal_Out': { title: 'หลักสูตรห้องเรียนปกติ (นอกเขต)', max: 78.5, avg: 55.62, min: 46, fullScore: 100, chanceThresholds: { high: 58.00, medium: 50.00 }, note: "" }
         };
 
+        // คำนวณค่าเฉลี่ย 2 ปี
         function getAverageComparisonData() {
             const avgData = {};
             const keys = ['EP', 'SMTE', 'GM', 'Normal_In', 'Normal_Out'];
@@ -1196,6 +1259,10 @@
                     avg: ((d2024.avg + d2025.avg) / 2),
                     min: ((d2024.min + d2025.min) / 2),
                     fullScore: d2025.fullScore,
+                    chanceThresholds: { 
+                        high: ((d2024.chanceThresholds.high + d2025.chanceThresholds.high) / 2),
+                        medium: ((d2024.chanceThresholds.medium + d2025.chanceThresholds.medium) / 2)
+                    },
                     note: d2025.note
                 };
             });
@@ -1203,9 +1270,8 @@
         }
         const averageComparisonData = getAverageComparisonData();
 
-        // ==================== UTILITY FUNCTIONS ====================
+        // ==================== UTILITY ====================
         function getEntryYear(entry) {
-            // ถ้ามี field year ให้ใช้เลย / ถ้าไม่มี ถือว่าเป็นข้อมูลเก่า (2569)
             return entry.year || LEGACY_FALLBACK_YEAR;
         }
 
@@ -1254,12 +1320,11 @@
             }
         };
 
-        // ==================== 🆕 YEAR FILTER HANDLERS ====================
+        // ==================== YEAR FILTER HANDLERS ====================
         window.setResultsYear = (year, btn) => {
             currentResultsYear = year;
-            document.querySelectorAll('.year-filter-bar .year-pill').forEach(p => {
-                if (p.closest('#results-section')) p.classList.remove('active');
-            });
+            const bar = document.querySelector('#results-section .year-filter-bar');
+            if (bar) bar.querySelectorAll('.year-pill').forEach(p => p.classList.remove('active'));
             btn.classList.add('active');
             currentPage = 1;
             renderScoresTable();
@@ -1267,20 +1332,35 @@
 
         window.setDashboardYear = (year, btn) => {
             currentDashboardYear = year;
-            document.querySelectorAll('.year-filter-bar .year-pill').forEach(p => {
-                if (p.closest('#dashboard-section')) p.classList.remove('active');
-            });
+            const bar = document.querySelector('#dashboard-section .year-filter-bar');
+            if (bar) bar.querySelectorAll('.year-pill').forEach(p => p.classList.remove('active'));
             btn.classList.add('active');
             renderFullDashboard();
         };
 
         window.setAdminYear = (year, btn) => {
             currentAdminYear = year;
-            document.querySelectorAll('.year-filter-bar .year-pill').forEach(p => {
-                if (p.closest('#admin-panel-section')) p.classList.remove('active');
-            });
+            const bar = document.querySelector('#admin-panel-section .year-filter-bar');
+            if (bar) bar.querySelectorAll('.year-pill').forEach(p => p.classList.remove('active'));
             btn.classList.add('active');
+            
+            // อัปเดตสถิติ
+            const filtered = allScores.filter(s => year === 'all' || getEntryYear(s) == year);
+            document.getElementById('admin-total-records').textContent = filtered.length;
+            if (filtered.length > 0 && filtered[0].timestamp) {
+                const latest = filtered[0];
+                document.getElementById('admin-latest-record').textContent = new Date(latest.timestamp.seconds * 1000).toLocaleDateString('th-TH');
+            } else {
+                document.getElementById('admin-latest-record').textContent = '-';
+            }
+            
             renderAdminTable();
+        };
+
+        // ==================== COMPARISON YEAR HANDLER ====================
+        window.changeComparisonYear = (year) => {
+            currentComparisonYear = year;
+            renderAnalysis();
         };
 
         // ==================== DASHBOARD FUNCTIONS ====================
@@ -1326,7 +1406,6 @@
             const stats = createStatsObject();
             
             allScores.forEach(userEntry => {
-                // 🆕 Filter by year
                 const entryYear = getEntryYear(userEntry);
                 if (filters.year !== 'all' && entryYear != filters.year) return;
                 
@@ -1397,7 +1476,6 @@
                     <div class="text-center py-6 sm:py-8 text-gray-500">
                         <i class="fas fa-info-circle text-3xl sm:text-4xl mb-4 text-gray-400"></i>
                         <p class="text-base sm:text-lg">ไม่พบข้อมูลตามตัวกรองที่เลือก</p>
-                        <p class="text-sm mt-2">ลองเปลี่ยนปีการศึกษาหรือตัวกรองอื่นดูนะคะ</p>
                     </div>
                 `;
                 return;
@@ -1438,7 +1516,6 @@
                 populateByGradeLevel(stats.byGrade);
             } catch (chartError) {
                 console.error("Chart rendering error:", chartError);
-                container.innerHTML = `<div class="text-red-500">เกิดข้อผิดพลาดในการวาดกราฟ: ${chartError.message}</div>`;
             }
         }
 
@@ -1500,8 +1577,8 @@
                 },
                 options: {
                     responsive: true, maintainAspectRatio: false,
-                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => 'คะแนน: ' + ctx.raw.toFixed(2) } } },
-                    scales: { y: { beginAtZero: true, title: { display: true, text: 'คะแนน' } } }
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true } }
                 }
             });
         }
@@ -1536,15 +1613,8 @@
             
             chartInstances['score-distribution-chart'] = new Chart(ctx, {
                 type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{ label: 'จำนวนผู้สอบ', data: bins, backgroundColor: 'rgba(75, 192, 192, 0.7)', borderColor: 'rgba(75, 192, 192, 1)', borderWidth: 1 }]
-                },
-                options: {
-                    responsive: true, maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: { y: { beginAtZero: true, title: { display: true, text: 'จำนวนผู้สอบ' } }, x: { title: { display: true, text: 'ช่วงคะแนน' } } }
-                }
+                data: { labels, datasets: [{ label: 'จำนวน', data: bins, backgroundColor: 'rgba(75, 192, 192, 0.7)' }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
             });
         }
 
@@ -1557,16 +1627,8 @@
             const ctx = document.getElementById(containerId).getContext('2d');
             if (chartInstances[containerId]) chartInstances[containerId].destroy();
 
-            const avgSpecial = [
-                safeAverage(gradeData.grade4.scoresSpecial),
-                safeAverage(gradeData.grade5.scoresSpecial),
-                safeAverage(gradeData.grade6.scoresSpecial)
-            ];
-            const avgNormal = [
-                safeAverage(gradeData.grade4.scoresNormal),
-                safeAverage(gradeData.grade5.scoresNormal),
-                safeAverage(gradeData.grade6.scoresNormal)
-            ];
+            const avgSpecial = [safeAverage(gradeData.grade4.scoresSpecial), safeAverage(gradeData.grade5.scoresSpecial), safeAverage(gradeData.grade6.scoresSpecial)];
+            const avgNormal = [safeAverage(gradeData.grade4.scoresNormal), safeAverage(gradeData.grade5.scoresNormal), safeAverage(gradeData.grade6.scoresNormal)];
 
             chartInstances[containerId] = new Chart(ctx, {
                 type: 'line',
@@ -1577,11 +1639,7 @@
                         { label: 'ห้องเรียนปกติ', data: avgNormal, borderColor: 'rgba(255, 159, 64, 1)', backgroundColor: 'rgba(255, 159, 64, 0.2)', fill: false, tension: 0.1 }
                     ]
                 },
-                options: {
-                    responsive: true, maintainAspectRatio: false,
-                    plugins: { legend: { position: 'bottom' } },
-                    scales: { y: { beginAtZero: true, title: { display: true, text: 'คะแนนเฉลี่ย' } } }
-                }
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
             });
         }
         
@@ -1589,26 +1647,16 @@
             const ctx = document.getElementById(containerId).getContext('2d');
             if (chartInstances[containerId]) chartInstances[containerId].destroy();
 
-            const avgSpecialOnsite = safeAverage(gradeData.byTypeSpecial['On-site']);
-            const avgSpecialOnline = safeAverage(gradeData.byTypeSpecial['Online']);
-            const avgNormalOnsite = safeAverage(gradeData.byTypeNormal['On-site']);
-            const avgNormalOnline = safeAverage(gradeData.byTypeNormal['Online']);
-            
             chartInstances[containerId] = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: ['On-site', 'Online'],
                     datasets: [
-                        { label: 'พิเศษ', data: [avgSpecialOnsite, avgSpecialOnline], backgroundColor: 'rgba(153, 102, 255, 0.7)' },
-                        { label: 'ปกติ', data: [avgNormalOnsite, avgNormalOnline], backgroundColor: 'rgba(255, 99, 132, 0.7)' }
+                        { label: 'พิเศษ', data: [safeAverage(gradeData.byTypeSpecial['On-site']), safeAverage(gradeData.byTypeSpecial['Online'])], backgroundColor: 'rgba(153, 102, 255, 0.7)' },
+                        { label: 'ปกติ', data: [safeAverage(gradeData.byTypeNormal['On-site']), safeAverage(gradeData.byTypeNormal['Online'])], backgroundColor: 'rgba(255, 99, 132, 0.7)' }
                     ]
                 },
-                options: {
-                    responsive: true, maintainAspectRatio: false,
-                    plugins: { legend: { position: 'bottom' } },
-                    scales: { y: { beginAtZero: true, title: { display: true, text: 'คะแนนเฉลี่ย' } } },
-                    interaction: { mode: 'index', intersect: false }
-                }
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
             });
         }
         
@@ -1617,22 +1665,10 @@
             if (!container) return;
             
             container.innerHTML = `
-                <div class="chart-card">
-                    <h4 class="chart-title text-base">แนวโน้มคะแนนเฉลี่ย (ป.4 → ป.6)</h4>
-                    <div class="chart-container-improved"><canvas id="grade-trend-chart"></canvas></div>
-                </div>
-                <div class="chart-card">
-                    <h4 class="chart-title text-base">เปรียบเทียบรูปแบบสอบ (ป.4)</h4>
-                    <div class="chart-container-improved"><canvas id="grade4-comparison-chart"></canvas></div>
-                </div>
-                <div class="chart-card">
-                    <h4 class="chart-title text-base">เปรียบเทียบรูปแบบสอบ (ป.5)</h4>
-                    <div class="chart-container-improved"><canvas id="grade5-comparison-chart"></canvas></div>
-                </div>
-                <div class="chart-card">
-                    <h4 class="chart-title text-base">เปรียบเทียบรูปแบบสอบ (ป.6)</h4>
-                    <div class="chart-container-improved"><canvas id="grade6-comparison-chart"></canvas></div>
-                </div>
+                <div class="chart-card"><h4 class="chart-title text-base">แนวโน้มคะแนนเฉลี่ย (ป.4 → ป.6)</h4><div class="chart-container-improved"><canvas id="grade-trend-chart"></canvas></div></div>
+                <div class="chart-card"><h4 class="chart-title text-base">เปรียบเทียบรูปแบบสอบ (ป.4)</h4><div class="chart-container-improved"><canvas id="grade4-comparison-chart"></canvas></div></div>
+                <div class="chart-card"><h4 class="chart-title text-base">เปรียบเทียบรูปแบบสอบ (ป.5)</h4><div class="chart-container-improved"><canvas id="grade5-comparison-chart"></canvas></div></div>
+                <div class="chart-card"><h4 class="chart-title text-base">เปรียบเทียบรูปแบบสอบ (ป.6)</h4><div class="chart-container-improved"><canvas id="grade6-comparison-chart"></canvas></div></div>
             `;
             
             createTrendChart('grade-trend-chart', byGradeData);
@@ -1668,17 +1704,17 @@
             if (hasSpecial && hasNormal) {
                 specialSection.style.display = 'block';
                 normalSection.style.display = 'block';
-                targetDescription.textContent = 'เลือกหลักสูตรที่ต้องการวิเคราะห์เปรียบเทียบกับคะแนนปี 2569 และ 2568';
+                targetDescription.textContent = 'เลือกหลักสูตรที่ต้องการวิเคราะห์';
             } else if (hasSpecial) {
                 specialSection.style.display = 'block';
                 normalSection.style.display = 'none';
-                targetDescription.textContent = 'เลือกหลักสูตรห้องเรียนพิเศษที่ต้องการวิเคราะห์';
+                targetDescription.textContent = 'เลือกหลักสูตรห้องเรียนพิเศษ';
                 document.getElementById('target-normal-in').checked = false;
                 document.getElementById('target-normal-out').checked = false;
             } else if (hasNormal) {
                 specialSection.style.display = 'none';
                 normalSection.style.display = 'block';
-                targetDescription.textContent = 'เลือกหลักสูตรห้องเรียนปกติที่ต้องการวิเคราะห์';
+                targetDescription.textContent = 'เลือกหลักสูตรห้องเรียนปกติ';
                 document.getElementById('target-special-ep').checked = false;
                 document.getElementById('target-special-smte').checked = false;
                 document.getElementById('target-special-gm').checked = false;
@@ -1709,7 +1745,7 @@
                     <label for="${examType}-rank" class="block text-gray-700 font-semibold mb-2">อันดับที่ได้ <span class="text-red-600">*</span></label>
                     <input type="number" id="${examType}-rank" class="input-field w-full md:w-48" placeholder="กรอกอันดับ" min="1" required>
                     <div id="${examType}-rank-error" class="text-red-600 text-sm mt-1 hidden">
-                        <i class="fas fa-exclamation-circle mr-1"></i>กรุณากรอกอันดับที่ได้
+                        <i class="fas fa-exclamation-circle mr-1"></i>กรุณากรอกอันดับ
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
@@ -1722,7 +1758,7 @@
                                 <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">/${subject.maxScore}</span>
                             </div>
                             <div id="${examType}-${subject.id}-error" class="text-red-600 text-sm mt-1 hidden">
-                                <i class="fas fa-exclamation-circle mr-1"></i>กรุณากรอกคะแนน${subject.name}
+                                <i class="fas fa-exclamation-circle mr-1"></i>กรุณากรอกคะแนน
                             </div>
                         </div>
                     `).join('')}
@@ -1747,50 +1783,25 @@
             const examTypeData = getExamTypeData(examType);
             let total = 0;
             examTypeData.subjects.forEach(subject => {
-                const scoreInput = document.getElementById(`${examType}-${subject.id}`);
-                total += parseFloat(scoreInput.value) || 0;
+                total += parseFloat(document.getElementById(`${examType}-${subject.id}`).value) || 0;
             });
             document.getElementById(`${examType}-total-score`).textContent = total.toFixed(2);
         };
 
         function getExamTypeData(examType) {
             const examTypes = {
-                'specialOnsite': {
-                    title: 'คะแนนห้องเรียนพิเศษ (On-site)', examType: 'On-site', curriculum: 'Special',
-                    subjects: [
-                        { id: 'math', name: 'คณิตศาสตร์', maxScore: 50 },
-                        { id: 'science', name: 'วิทยาศาสตร์', maxScore: 60 },
-                        { id: 'english', name: 'ภาษาอังกฤษ', maxScore: 30 }
-                    ]
-                },
-                'normalOnsite': {
-                    title: 'คะแนนห้องเรียนปกติ (On-site)', examType: 'On-site', curriculum: 'Normal',
-                    subjects: [
-                        { id: 'math', name: 'คณิตศาสตร์', maxScore: 30 },
-                        { id: 'science', name: 'วิทยาศาสตร์', maxScore: 30 },
-                        { id: 'english', name: 'ภาษาอังกฤษ', maxScore: 30 },
-                        { id: 'thai', name: 'ภาษาไทย', maxScore: 30 },
-                        { id: 'social', name: 'สังคมศึกษา', maxScore: 30 }
-                    ]
-                },
-                'specialOnline': {
-                    title: 'คะแนนห้องเรียนพิเศษ (Online)', examType: 'Online', curriculum: 'Special',
-                    subjects: [
-                        { id: 'math', name: 'คณิตศาสตร์', maxScore: 50 },
-                        { id: 'science', name: 'วิทยาศาสตร์', maxScore: 60 },
-                        { id: 'english', name: 'ภาษาอังกฤษ', maxScore: 30 }
-                    ]
-                },
-                'normalOnline': {
-                    title: 'คะแนนห้องเรียนปกติ (Online)', examType: 'Online', curriculum: 'Normal',
-                    subjects: [
-                        { id: 'math', name: 'คณิตศาสตร์', maxScore: 30 },
-                        { id: 'science', name: 'วิทยาศาสตร์', maxScore: 30 },
-                        { id: 'english', name: 'ภาษาอังกฤษ', maxScore: 30 },
-                        { id: 'thai', name: 'ภาษาไทย', maxScore: 30 },
-                        { id: 'social', name: 'สังคมศึกษา', maxScore: 30 }
-                    ]
-                }
+                'specialOnsite': { title: 'คะแนนห้องเรียนพิเศษ (On-site)', examType: 'On-site', curriculum: 'Special', subjects: [
+                    { id: 'math', name: 'คณิตศาสตร์', maxScore: 50 }, { id: 'science', name: 'วิทยาศาสตร์', maxScore: 60 }, { id: 'english', name: 'ภาษาอังกฤษ', maxScore: 30 }
+                ]},
+                'normalOnsite': { title: 'คะแนนห้องเรียนปกติ (On-site)', examType: 'On-site', curriculum: 'Normal', subjects: [
+                    { id: 'math', name: 'คณิตศาสตร์', maxScore: 30 }, { id: 'science', name: 'วิทยาศาสตร์', maxScore: 30 }, { id: 'english', name: 'ภาษาอังกฤษ', maxScore: 30 }, { id: 'thai', name: 'ภาษาไทย', maxScore: 30 }, { id: 'social', name: 'สังคมศึกษา', maxScore: 30 }
+                ]},
+                'specialOnline': { title: 'คะแนนห้องเรียนพิเศษ (Online)', examType: 'Online', curriculum: 'Special', subjects: [
+                    { id: 'math', name: 'คณิตศาสตร์', maxScore: 50 }, { id: 'science', name: 'วิทยาศาสตร์', maxScore: 60 }, { id: 'english', name: 'ภาษาอังกฤษ', maxScore: 30 }
+                ]},
+                'normalOnline': { title: 'คะแนนห้องเรียนปกติ (Online)', examType: 'Online', curriculum: 'Normal', subjects: [
+                    { id: 'math', name: 'คณิตศาสตร์', maxScore: 30 }, { id: 'science', name: 'วิทยาศาสตร์', maxScore: 30 }, { id: 'english', name: 'ภาษาอังกฤษ', maxScore: 30 }, { id: 'thai', name: 'ภาษาไทย', maxScore: 30 }, { id: 'social', name: 'สังคมศึกษา', maxScore: 30 }
+                ]}
             };
             return examTypes[examType];
         }
@@ -1800,8 +1811,7 @@
         function validateForm() {
             let isValid = true;
             
-            const currentGrade = document.getElementById('current-grade').value;
-            if (!currentGrade) {
+            if (!document.getElementById('current-grade').value) {
                 document.getElementById('current-grade-error').classList.remove('hidden');
                 document.getElementById('current-grade').classList.add('error');
                 isValid = false;
@@ -1849,7 +1859,7 @@
             const hasNormalTarget = document.getElementById('target-normal-in').checked || document.getElementById('target-normal-out').checked;
             
             if (!hasSpecialTarget && !hasNormalTarget) {
-                showMessage('กรุณาเลือกเป้าหมายการสอบเข้าอย่างน้อย 1 รายการ', 'error');
+                showMessage('กรุณาเลือกเป้าหมายอย่างน้อย 1 รายการ', 'error');
                 isValid = false;
             }
             
@@ -1858,7 +1868,7 @@
 
         window.validateAndSubmitForm = async function() {
             if (!validateForm()) {
-                showMessage('กรุณากรอกข้อมูลให้ครบถ้วนและถูกต้อง', 'error');
+                showMessage('กรุณากรอกข้อมูลให้ครบถ้วน', 'error');
                 return;
             }
             
@@ -1890,7 +1900,6 @@
             
             const targetSpecial = [];
             const targetNormal = [];
-            
             if (document.getElementById('target-special-ep').checked) targetSpecial.push('EP');
             if (document.getElementById('target-special-smte').checked) targetSpecial.push('SMTE');
             if (document.getElementById('target-special-gm').checked) targetSpecial.push('GM');
@@ -1898,29 +1907,26 @@
             if (document.getElementById('target-normal-out').checked) targetNormal.push('Normal_Out');
             
             try {
-                document.getElementById('submit-btn').innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> กำลังส่งข้อมูล...';
+                document.getElementById('submit-btn').innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> กำลังส่ง...';
                 document.getElementById('submit-btn').disabled = true;
                 
-                // 🆕 เพิ่ม year: 2570 ตอนบันทึก
                 await db.collection('pretestScores').add({
                     nickname: nickname,
                     currentGrade: currentGrade,
                     scores: scoresData,
                     targetSpecial: targetSpecial,
                     targetNormal: targetNormal,
-                    year: CURRENT_YEAR, // 👈 ปี 2570
+                    year: CURRENT_YEAR,
                     timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 });
                 
                 saveFormDataToLocalStorage();
                 switchView('analysis');
-                
                 showMessage('บันทึกข้อมูลสำเร็จ! (ปี 2570)', 'success');
                 isDataFetched = false;
-                
             } catch (error) {
-                console.error('Error saving to Firebase:', error);
-                showMessage('เกิดข้อผิดพลาดในการบันทึกข้อมูล: ' + error.message, 'error');
+                console.error('Error saving:', error);
+                showMessage('เกิดข้อผิดพลาด: ' + error.message, 'error');
                 document.getElementById('submit-btn').innerHTML = '<i class="fas fa-paper-plane mr-2"></i> ส่งข้อมูลคะแนน (บันทึกเป็นปี 2570)';
                 document.getElementById('submit-btn').disabled = false;
             }
@@ -1957,9 +1963,7 @@
                 if (document.getElementById('target-normal-out').checked) formData.targetNormal.push('Normal_Out');
                 
                 localStorage.setItem('satriwit-pretest-form-data', JSON.stringify(formData));
-            } catch (error) {
-                console.error('Error saving form data to local storage:', error);
-            }
+            } catch (error) { console.error(error); }
         }
 
         function loadFormDataFromLocalStorage() {
@@ -1992,9 +1996,7 @@
                     
                     updateTargetVisibility();
                 }
-            } catch (error) {
-                console.error('Error loading form data from local storage:', error);
-            }
+            } catch (error) { console.error(error); }
         }
 
         window.goToAnalysis = () => {
@@ -2008,8 +2010,6 @@
             
             document.getElementById('nickname').value = '';
             document.getElementById('current-grade').value = '';
-            document.getElementById('current-grade-error').classList.add('hidden');
-            document.getElementById('current-grade').classList.remove('error');
             
             ['specialOnsite', 'normalOnsite', 'specialOnline', 'normalOnline'].forEach(type => {
                 document.getElementById(`${type}-checkbox`).checked = false;
@@ -2024,61 +2024,49 @@
             document.getElementById('target-normal-out').checked = false;
             
             updateTargetVisibility();
-            
             document.getElementById('submit-btn').innerHTML = '<i class="fas fa-paper-plane mr-2"></i> ส่งข้อมูลคะแนน (บันทึกเป็นปี 2570)';
             document.getElementById('submit-btn').disabled = false;
-            
             localStorage.removeItem('satriwit-pretest-form-data');
         };
 
         function showMessage(message, type) {
             const messageBox = document.getElementById('message-box');
             const messageDiv = document.createElement('div');
-            
             const bgColor = type === 'success' ? 'bg-green-100 border-green-400 text-green-700' : 
                           type === 'error' ? 'bg-red-100 border-red-400 text-red-700' : 
                           'bg-blue-100 border-blue-400 text-blue-700';
             
-            messageDiv.className = `p-4 mb-4 rounded-lg border ${bgColor} shadow-lg transition-all duration-300`;
+            messageDiv.className = `p-4 mb-4 rounded-lg border ${bgColor} shadow-lg`;
             messageDiv.innerHTML = `
                 <div class="flex justify-between items-center">
-                    <div>
-                        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-triangle' : 'info-circle'} mr-2"></i>
-                        ${message}
-                    </div>
-                    <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-gray-500 hover:text-gray-700">
-                        <i class="fas fa-times"></i>
-                    </button>
+                    <div><i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-triangle' : 'info-circle'} mr-2"></i>${message}</div>
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-4"><i class="fas fa-times"></i></button>
                 </div>
             `;
-            
             messageBox.appendChild(messageDiv);
             setTimeout(() => { if (messageDiv.parentElement) messageDiv.remove(); }, 5000);
         }
 
         window.testConnection = async () => {
             const statusElement = document.getElementById('connection-status-text');
-            statusElement.innerHTML = '<i class="fas fa-sync-alt fa-spin mr-2"></i> กำลังทดสอบการเชื่อมต่อ...';
+            statusElement.innerHTML = '<i class="fas fa-sync-alt fa-spin mr-2"></i> กำลังทดสอบ...';
             
             try {
                 await db.collection('pretestScores').limit(1).get();
                 document.getElementById('connection-status').classList.remove('bg-yellow-50', 'border-yellow-400', 'text-yellow-800');
                 document.getElementById('connection-status').classList.add('bg-green-50', 'border-green-400', 'text-green-800');
-                statusElement.innerHTML = '<i class="fas fa-check-circle mr-2"></i>การเชื่อมต่อกับ Firebase ทำงานปกติ';
-                showMessage('การเชื่อมต่อกับ Firebase ทำงานปกติ', 'success');
+                statusElement.innerHTML = '<i class="fas fa-check-circle mr-2"></i>การเชื่อมต่อปกติ';
             } catch (error) {
-                console.error('Connection test failed:', error);
                 document.getElementById('connection-status').classList.remove('bg-yellow-50', 'border-yellow-400', 'text-yellow-800');
                 document.getElementById('connection-status').classList.add('bg-red-50', 'border-red-400', 'text-red-800');
-                statusElement.innerHTML = '<i class="fas fa-times-circle mr-2"></i>ไม่สามารถเชื่อมต่อกับ Firebase ได้: ' + error.message;
-                showMessage('ไม่สามารถเชื่อมต่อกับ Firebase ได้', 'error');
+                statusElement.innerHTML = '<i class="fas fa-times-circle mr-2"></i>ไม่สามารถเชื่อมต่อได้: ' + error.message;
             }
         };
 
         async function fetchScoresFromFirebase(renderTable = true, forceFetch = false) {
             if (isDataFetched && renderTable && !forceFetch) {
                 document.getElementById('data-source-info').innerHTML = 
-                    '<i class="fas fa-cloud mr-2"></i>แสดงข้อมูลจาก Cache (' + allScores.length + ' รายการ) - อัปเดตล่าสุด: ' + new Date().toLocaleTimeString('th-TH');
+                    '<i class="fas fa-cloud mr-2"></i>แสดงข้อมูลจาก Cache (' + allScores.length + ' รายการ)';
                 renderScoresTable();
                 return;
             }
@@ -2088,7 +2076,6 @@
                 if (renderTable) {
                     document.getElementById('loading-indicator').classList.remove('hidden');
                     document.getElementById('results-pagination-container').innerHTML = '';
-                    showMessage('กำลังโหลดข้อมูลจาก Firebase...', 'info');
                 }
                 
                 const querySnapshot = await db.collection('pretestScores').orderBy('timestamp', 'desc').get();
@@ -2103,17 +2090,12 @@
                 
                 if (renderTable) {
                     document.getElementById('data-source-info').innerHTML = 
-                        '<i class="fas fa-cloud mr-2"></i>แสดงข้อมูลจาก Firebase (' + allScores.length + ' รายการ) - อัปเดตล่าสุด: ' + new Date().toLocaleTimeString('th-TH');
-                    showMessage('โหลดข้อมูลจาก Firebase สำเร็จ! (' + allScores.length + ' รายการ)', 'success');
+                        '<i class="fas fa-cloud mr-2"></i>แสดงข้อมูลจาก Firebase (' + allScores.length + ' รายการ)';
                     renderScoresTable();
                 }
             } catch (error) {
-                console.error('Error fetching from Firebase:', error);
+                console.error(error);
                 isDataFetched = false;
-                if (renderTable) {
-                    showMessage('ไม่สามารถโหลดข้อมูลจาก Firebase ได้: ' + error.message, 'error');
-                    document.getElementById('data-source-info').innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>ไม่สามารถโหลดข้อมูลจาก Firebase ได้';
-                }
             } finally {
                 if (renderTable) document.getElementById('loading-indicator').classList.add('hidden');
             }
@@ -2146,11 +2128,10 @@
                     allExamScores.push({
                         nickname: score.nickname,
                         currentGrade: score.currentGrade,
-                        examType: examType,
-                        curriculum: curriculum,
+                        examType, curriculum,
                         rank: examScore.rank,
                         totalScore: examScore.totalScore,
-                        year: entryYear, // 🆕
+                        year: entryYear,
                         scores: {
                             math: scoresData.math || 0,
                             science: scoresData.science || 0,
@@ -2185,7 +2166,7 @@
             const pageInfo = document.getElementById('page-info');
             
             if (filteredExamScores.length === 0) {
-                container.innerHTML = '<div class="text-center py-6 text-gray-500">ไม่พบข้อมูลตามตัวกรองที่เลือก</div>';
+                container.innerHTML = '<div class="text-center py-6 text-gray-500">ไม่พบข้อมูลตามตัวกรอง</div>';
                 paginationControls.classList.add('hidden');
                 return;
             }
@@ -2200,17 +2181,17 @@
                     <table class="w-full text-xs sm:text-sm text-left text-gray-600">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                             <tr>
-                                <th scope="col" class="py-2 px-2 sm:py-3 sm:px-4">อันดับ</th>
-                                <th scope="col" class="py-2 px-2 sm:py-3 sm:px-4">ชื่อ</th>
-                                <th scope="col" class="py-2 px-2 sm:py-3 sm:px-4">ปี</th>
-                                <th scope="col" class="py-2 px-2 sm:py-3 sm:px-4">ระดับชั้น</th>
-                                <th scope="col" class="py-2 px-2 sm:py-3 sm:px-4">ประเภทสอบ</th>
-                                <th scope="col" class="py-2 px-2 sm:py-3 sm:px-4 text-right">คะแนนรวม</th>
-                                <th scope="col" class="py-2 px-2 sm:py-3 sm:px-4">คณิต</th>
-                                <th scope="col" class="py-2 px-2 sm:py-3 sm:px-4">วิทย์</th>
-                                <th scope="col" class="py-2 px-2 sm:py-3 sm:px-4">อังกฤษ</th>
-                                <th scope="col" class="py-2 px-2 sm:py-3 sm:px-4">ไทย</th>
-                                <th scope="col" class="py-2 px-2 sm:py-3 sm:px-4">สังคม</th>
+                                <th class="py-2 px-2 sm:py-3 sm:px-4">อันดับ</th>
+                                <th class="py-2 px-2 sm:py-3 sm:px-4">ชื่อ</th>
+                                <th class="py-2 px-2 sm:py-3 sm:px-4">ปี</th>
+                                <th class="py-2 px-2 sm:py-3 sm:px-4">ระดับชั้น</th>
+                                <th class="py-2 px-2 sm:py-3 sm:px-4">ประเภทสอบ</th>
+                                <th class="py-2 px-2 sm:py-3 sm:px-4 text-right">คะแนนรวม</th>
+                                <th class="py-2 px-2 sm:py-3 sm:px-4">คณิต</th>
+                                <th class="py-2 px-2 sm:py-3 sm:px-4">วิทย์</th>
+                                <th class="py-2 px-2 sm:py-3 sm:px-4">อังกฤษ</th>
+                                <th class="py-2 px-2 sm:py-3 sm:px-4">ไทย</th>
+                                <th class="py-2 px-2 sm:py-3 sm:px-4">สังคม</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -2239,12 +2220,7 @@
                 `;
             });
             
-            tableHTML += `
-                        </tbody>
-                    </table>
-                </div>
-                <div class="page-number">แสดงรายการ ${startIndex + 1} - ${endIndex} จากทั้งหมด ${filteredExamScores.length} รายการ</div>
-            `;
+            tableHTML += `</tbody></table></div><div class="page-number">แสดง ${startIndex + 1} - ${endIndex} จาก ${filteredExamScores.length} รายการ</div>`;
             
             container.innerHTML = tableHTML;
             pageInfo.textContent = `หน้า ${currentPage} จาก ${totalPages}`;
@@ -2263,8 +2239,8 @@
         };
 
         function getGradeText(gradeCode) {
-            const gradeMap = { 'grade4': 'ป.4', 'grade5': 'ป.5', 'grade6': 'ป.6' };
-            return gradeMap[gradeCode] || gradeCode;
+            const map = { 'grade4': 'ป.4', 'grade5': 'ป.5', 'grade6': 'ป.6' };
+            return map[gradeCode] || gradeCode;
         }
 
         // ==================== ANALYSIS FUNCTIONS ====================
@@ -2319,16 +2295,26 @@
                 const targetsToAnalyze = (examTypeData.curriculum === 'Special') ? selectedTargets.Special : selectedTargets.Normal;
                 
                 targetsToAnalyze.forEach(target => {
-                    const stats2025 = comparisonData2025[target];
-                    const stats2024 = comparisonData2024[target];
-                    const statsAvg = averageComparisonData[target];
+                    const analysisResult = calculateRealExamScore(currentScores, target, examType);
+                    const tabKey = `${examTypeData.curriculum}_${examTypeData.examType}_${target}`;
                     
-                    if (stats2025) {
-                        const analysisResult = calculateRealExamScore(currentScores, target, examType);
-                        const tabKey = `${examTypeData.curriculum}_${examTypeData.examType}_${target}`;
-                        
+                    // 🆕 ใช้ข้อมูลตาม currentComparisonYear
+                    let statsToUse, yearLabel;
+                    if (currentComparisonYear === '2569') {
+                        statsToUse = comparisonData2025[target];
+                        yearLabel = 'ปี 2569';
+                    } else if (currentComparisonYear === '2568') {
+                        statsToUse = comparisonData2024[target];
+                        yearLabel = 'ปี 2568';
+                    } else {
+                        statsToUse = averageComparisonData[target];
+                        yearLabel = 'ค่าเฉลี่ย 2 ปี (2568-2569)';
+                    }
+                    
+                    if (statsToUse) {
                         analysisData[tabKey] = {
-                            stats2025, stats2024, statsAvg,
+                            stats: statsToUse,
+                            yearLabel: yearLabel,
                             projectedScore: analysisResult.projectedScore,
                             target: target,
                             preTestTotal: preTestTotal,
@@ -2337,7 +2323,7 @@
                             projectedSubjects: analysisResult.projectedSubjects,
                             curriculum: examTypeData.curriculum,
                             examMode: examTypeData.examType,
-                            title: `${examTypeData.title} - ${stats2025.title}`
+                            title: `${examTypeData.title} - ${statsToUse.title}`
                         };
                         hasAnalysisData = true;
                     }
@@ -2349,7 +2335,7 @@
                     <div class="text-center py-6 sm:py-8 text-gray-500">
                         <i class="fas fa-check-circle text-3xl sm:text-4xl mb-4 text-gray-400"></i>
                         <p class="text-base sm:text-lg">คุณกรอกข้อมูลเรียบร้อย</p>
-                        <p class="text-sm mt-2">...แต่ยังไม่ได้เลือก "เป้าหมาย" ที่สอดคล้องกับการสอบที่คุณกรอกค่ะ</p>
+                        <p class="text-sm mt-2">...แต่ยังไม่ได้เลือก "เป้าหมาย" ที่สอดคล้องกัน</p>
                     </div>
                 `;
                 actionButtons.classList.add('hidden');
@@ -2365,15 +2351,11 @@
                 const tabId = `analysis-tab-${index}`;
                 const contentId = `analysis-content-${index}`;
                 
-                tabHTML += `
-                    <button id="${tabId}" class="analysis-tab ${firstTab ? 'active' : ''}" onclick="switchAnalysisTab('${tabId}', '${contentId}')" style="padding: 0.75rem 1.5rem;border-radius: 0.5rem;font-weight: 600;cursor: pointer;border: 2px solid transparent;background: #f9fafb;color: #4b5563;margin: 0 0.25rem 0.5rem 0.25rem;">
-                        ${data.title}
-                    </button>
-                `;
+                tabHTML += `<button id="${tabId}" class="analysis-tab ${firstTab ? 'active' : ''}" onclick="switchAnalysisTab('${tabId}', '${contentId}')">${data.title}</button>`;
                 
                 contentHTML += `
-                    <div id="${contentId}" class="analysis-tab-content ${firstTab ? 'active' : ''}" style="${firstTab ? 'display: block;' : 'display: none;'}">
-                        ${createAnalysisCard(data.stats2025, data.stats2024, data.statsAvg, data.projectedScore, data.target, data.preTestTotal, data.currentScores, data.examType, data.projectedSubjects)}
+                    <div id="${contentId}" class="analysis-tab-content ${firstTab ? 'active' : ''}">
+                        ${createAnalysisCard(data)}
                     </div>
                 `;
                 firstTab = false;
@@ -2386,19 +2368,17 @@
         }
 
         window.switchAnalysisTab = (tabId, contentId) => {
-            document.querySelectorAll('.analysis-tab-content').forEach(tab => tab.style.display = 'none');
+            document.querySelectorAll('.analysis-tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
             document.querySelectorAll('.analysis-tab').forEach(tab => {
-                tab.style.background = '#f9fafb';
-                tab.style.color = '#4b5563';
-                tab.style.borderColor = 'transparent';
+                tab.classList.remove('active');
             });
             
             const activeBtn = document.getElementById(tabId);
-            activeBtn.style.background = '#e0e7ff';
-            activeBtn.style.color = '#4338ca';
-            activeBtn.style.borderColor = '#a5b4fc';
-            
-            document.getElementById(contentId).style.display = 'block';
+            if (activeBtn) activeBtn.classList.add('active');
+            const activeContent = document.getElementById(contentId);
+            if (activeContent) activeContent.classList.add('active');
         };
 
         function calculateRealExamScore(preTestScores, targetCurriculum, examType) {
@@ -2452,13 +2432,18 @@
         }
 
         function calculateAdmissionChance(projectedScore, stats) {
-            const { chanceThresholds } = stats;
-            if (projectedScore >= chanceThresholds.high) {
-                return { level: 'high', text: 'พร้อมมาก', description: 'ยอดเยี่ยมมากค่ะ! 🌟 ตอนนี้น้องอยู่ในจุดที่พร้อมเต็มที่แล้ว 💪 ขอแค่รักษาความมุ่งมั่นและตั้งใจต่อไป ✨ ผลสำเร็จอยู่ไม่ไกลแน่นอนค่ะ 🏆' };
-            } else if (projectedScore >= chanceThresholds.medium) {
-                return { level: 'medium', text: 'มีลุ้น', description: 'ถือว่าเป็นโอกาสดีมาก 💪 ขอให้น้องรักษาความตั้งใจและเสริมจุดแข็งอีกเล็กน้อย ✨ รับรองว่าผลลัพธ์ในการสอบจะออกมาดีที่สุดแน่นอน 🏆' };
+            // Fallback ถ้าไม่มี chanceThresholds
+            const thresholds = stats.chanceThresholds || { 
+                high: stats.avg * 1.05, 
+                medium: stats.avg * 0.95 
+            };
+            
+            if (projectedScore >= thresholds.high) {
+                return { level: 'high', text: 'พร้อมมาก', description: 'ยอดเยี่ยมมากค่ะ! 🌟 ตอนนี้น้องอยู่ในจุดที่พร้อมเต็มที่แล้ว 💪 ขอแค่รักษาความมุ่งมั่นและตั้งใจต่อไป ✨' };
+            } else if (projectedScore >= thresholds.medium) {
+                return { level: 'medium', text: 'มีลุ้น', description: 'ถือว่าเป็นโอกาสดีมาก 💪 ขอให้น้องรักษาความตั้งใจและเสริมจุดแข็งอีกเล็กน้อย ✨' };
             } else {
-                return { level: 'low', text: 'ท้าทาย', description: 'มาพยายามด้วยกันอีกนิดนะคะ ถ้าฝึกฝนอย่างสม่ำเสมอ เพิ่มเวลาเตรียมตัวอีกนิด ความสำเร็จอยู่ไม่ไกลแน่นอนค่ะ 🌱' };
+                return { level: 'low', text: 'ท้าทาย', description: 'มาพยายามด้วยกันอีกนิดนะคะ ถ้าฝึกฝนอย่างสม่ำเสมอ ความสำเร็จอยู่ไม่ไกลแน่นอนค่ะ 🌱' };
             }
         }
 
@@ -2493,40 +2478,48 @@
             }
             
             if (weaknesses.length > 0) {
-                improvements.push(`ทบทวนเนื้อหา${weaknesses.join(', ')}และฝึกทำข้อสอบเพิ่มขึ้นอีกนิดนะคะ อย่าลืมลองทำแบบจับเวลาด้วยน้า เราจะสู้ไปด้วยกันค่ะ 💪😊`);
+                improvements.push(`ทบทวนเนื้อหา${weaknesses.join(', ')}และฝึกทำข้อสอบเพิ่มขึ้นอีกนิดนะคะ 💪😊`);
             }
             
             return { strengths, weaknesses, improvements };
         }
 
-        function createAnalysisCard(stats2025, stats2024, statsAvg, projectedScore, target, preTestTotal, preTestScores, examType, projectedSubjects) {
-            const { title, min, avg, max, fullScore } = stats2025;
-            const scorePercent = Math.min(100, (projectedScore / fullScore * 100)).toFixed(2);
+        // 🆕 ปรับ createAnalysisCard ให้ใช้ data object
+        function createAnalysisCard(data) {
+            const { stats, yearLabel, projectedScore, target, preTestTotal, currentScores, examType, projectedSubjects } = data;
+            const { title, min, avg, max, fullScore } = stats;
             
-            const chance = calculateAdmissionChance(projectedScore, stats2025);
-            const analysis = analyzeStrengthsWeaknesses(preTestScores, target, examType);
+            const scorePercent = Math.min(100, (projectedScore / fullScore * 100)).toFixed(2);
+            const minPercent = (min / fullScore * 100);
+            const avgPercent = (avg / fullScore * 100);
+            const maxPercent = (max / fullScore * 100);
+            
+            const chance = calculateAdmissionChance(projectedScore, stats);
+            const analysis = analyzeStrengthsWeaknesses(currentScores, target, examType);
 
+            // ตารางรายวิชา
             let subjectTableHTML = '<table class="subject-table"><thead><tr><th>วิชา</th><th>คะแนน Pre-test</th><th>คะแนนที่เทียบได้</th></tr></thead><tbody>';
             
-            if (projectedSubjects.math !== undefined) subjectTableHTML += `<tr><td>คณิตศาสตร์</td><td class="score-pretest">${preTestScores.math.toFixed(2)}</td><td class="score-projected">${projectedSubjects.math.toFixed(2)}</td></tr>`;
-            if (projectedSubjects.science !== undefined) subjectTableHTML += `<tr><td>วิทยาศาสตร์</td><td class="score-pretest">${preTestScores.science.toFixed(2)}</td><td class="score-projected">${projectedSubjects.science.toFixed(2)}</td></tr>`;
-            if (projectedSubjects.english !== undefined) subjectTableHTML += `<tr><td>ภาษาอังกฤษ</td><td class="score-pretest">${preTestScores.english.toFixed(2)}</td><td class="score-projected">${projectedSubjects.english.toFixed(2)}</td></tr>`;
-            if (projectedSubjects.thai !== undefined) subjectTableHTML += `<tr><td>ภาษาไทย</td><td class="score-pretest">${preTestScores.thai.toFixed(2)}</td><td class="score-projected">${projectedSubjects.thai.toFixed(2)}</td></tr>`;
-            if (projectedSubjects.social !== undefined) subjectTableHTML += `<tr><td>สังคมศึกษา</td><td class="score-pretest">${preTestScores.social.toFixed(2)}</td><td class="score-projected">${projectedSubjects.social.toFixed(2)}</td></tr>`;
+            if (projectedSubjects.math !== undefined) subjectTableHTML += `<tr><td>คณิตศาสตร์</td><td class="score-pretest">${currentScores.math.toFixed(2)}</td><td class="score-projected">${projectedSubjects.math.toFixed(2)}</td></tr>`;
+            if (projectedSubjects.science !== undefined) subjectTableHTML += `<tr><td>วิทยาศาสตร์</td><td class="score-pretest">${currentScores.science.toFixed(2)}</td><td class="score-projected">${projectedSubjects.science.toFixed(2)}</td></tr>`;
+            if (projectedSubjects.english !== undefined) subjectTableHTML += `<tr><td>ภาษาอังกฤษ</td><td class="score-pretest">${currentScores.english.toFixed(2)}</td><td class="score-projected">${projectedSubjects.english.toFixed(2)}</td></tr>`;
+            if (projectedSubjects.thai !== undefined) subjectTableHTML += `<tr><td>ภาษาไทย</td><td class="score-pretest">${currentScores.thai.toFixed(2)}</td><td class="score-projected">${projectedSubjects.thai.toFixed(2)}</td></tr>`;
+            if (projectedSubjects.social !== undefined) subjectTableHTML += `<tr><td>สังคมศึกษา</td><td class="score-pretest">${currentScores.social.toFixed(2)}</td><td class="score-projected">${projectedSubjects.social.toFixed(2)}</td></tr>`;
             if (projectedSubjects.interview !== undefined) subjectTableHTML += `<tr><td>สัมภาษณ์ (สมมติฐาน)</td><td class="score-pretest">-</td><td class="score-projected">${projectedSubjects.interview.toFixed(2)}</td></tr>`;
             subjectTableHTML += '</tbody></table>';
 
-            const subjectAdviceTable = createSubjectAdviceTable(target, preTestScores, examType);
+            const subjectAdviceTable = createSubjectAdviceTable(target, currentScores, examType);
             const summary = createSummary(target, analysis, preTestTotal);
-            
-            // คำนวณ % สำหรับกราฟเปรียบเทียบ
-            const minP25 = (stats2025.min / fullScore * 100);
-            const avgP25 = (stats2025.avg / fullScore * 100);
-            const maxP25 = (stats2025.max / fullScore * 100);
             
             return `
                 <div class="border rounded-lg p-6 shadow-md bg-white">
                     <h3 class="text-xl font-bold text-gray-800 mb-4">${title}</h3>
+                    
+                    <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 mb-4 text-center">
+                        <span class="text-sm font-bold text-orange-700">
+                            <i class="fas fa-balance-scale mr-1"></i> เปรียบเทียบกับ: ${yearLabel}
+                        </span>
+                    </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-2">
                         <div class="text-center p-4 bg-blue-50 rounded-lg">
@@ -2547,27 +2540,22 @@
                         <p class="text-sm">${chance.description}</p>
                     </div>
                     
-                    ${target === 'EP' ? 
-                        `<div class="text-sm text-center bg-orange-100 text-orange-700 p-2 rounded-md mb-6">
-                            <b>*หมายเหตุ:</b> คะแนนนี้คำนวณโดยสมมติว่าคุณได้คะแนนส่วนสัมภาษณ์เต็ม 20 คะแนน
-                        </div>` : ''
-                    }
+                    ${target === 'EP' ? `<div class="text-sm text-center bg-orange-100 text-orange-700 p-2 rounded-md mb-6"><b>*หมายเหตุ:</b> คำนวณโดยสมมติว่าได้คะแนนสัมภาษณ์เต็ม 20 คะแนน</div>` : ''}
                     
-                    <!-- กราฟเปรียบเทียบปี 2569 -->
-                    <p class="text-sm font-semibold text-gray-700 mb-2 mt-6">📍 เปรียบเทียบกับสถิติปี 2569</p>
+                    <p class="text-sm font-semibold text-gray-700 mb-2 mt-6">📍 เปรียบเทียบกับสถิติ ${yearLabel}</p>
                     <div class="relative h-8 bg-gray-200 rounded-full mb-4 w-full" style="margin-top: 2.5rem;">
                         <div class="absolute h-full bg-gradient-to-r from-red-400 via-yellow-400 to-green-400 rounded-full" style="width:100%;"></div>
-                        <div class="absolute top-0 h-full flex items-center" style="left: ${minP25}%;">
+                        <div class="absolute top-0 h-full flex items-center" style="left: ${minPercent}%;">
                             <div class="w-1 h-10 bg-red-600 -translate-x-1/2"></div>
-                            <span class="absolute -top-6 -translate-x-1/2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">ต่ำสุด 69</span>
+                            <span class="absolute -top-6 -translate-x-1/2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">ต่ำสุด</span>
                         </div>
-                        <div class="absolute top-0 h-full flex items-center" style="left: ${avgP25}%;">
+                        <div class="absolute top-0 h-full flex items-center" style="left: ${avgPercent}%;">
                             <div class="w-1 h-10 bg-yellow-600 -translate-x-1/2"></div>
-                            <span class="absolute -top-6 -translate-x-1/2 bg-yellow-600 text-white text-xs font-bold px-2 py-1 rounded">เฉลี่ย 69</span>
+                            <span class="absolute -top-6 -translate-x-1/2 bg-yellow-600 text-white text-xs font-bold px-2 py-1 rounded">เฉลี่ย</span>
                         </div>
-                        <div class="absolute top-0 h-full flex items-center" style="left: ${maxP25}%;">
+                        <div class="absolute top-0 h-full flex items-center" style="left: ${maxPercent}%;">
                             <div class="w-1 h-10 bg-green-600 -translate-x-1/2"></div>
-                            <span class="absolute -top-6 -translate-x-1/2 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded">สูงสุด 69</span>
+                            <span class="absolute -top-6 -translate-x-1/2 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded">สูงสุด</span>
                         </div>
                         <div class="absolute top-0 h-full flex items-center" style="left: ${scorePercent}%;">
                             <div class="w-1 h-10 bg-indigo-600 -translate-x-1/2"></div>
@@ -2576,90 +2564,33 @@
                     </div>
                     
                     <div class="flex justify-between text-xs text-gray-600 px-1">
-                        <span>0</span>
-                        <span>${fullScore}</span>
+                        <span>0</span><span>${fullScore}</span>
                     </div>
                     
-                    <!-- สถิติปี 2569 -->
-                    <p class="text-sm font-bold text-blue-700 mt-6 mb-2">📊 สถิติปี 2569</p>
+                    <p class="text-sm font-bold text-blue-700 mt-6 mb-2">📊 สถิติ ${yearLabel}</p>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                         <div class="bg-red-50 p-3 rounded-lg border border-red-200">
                             <p class="font-semibold text-red-600 text-xs">ต่ำสุด</p>
-                            <p class="text-2xl font-bold">${stats2025.min.toFixed(2)}</p>
+                            <p class="text-2xl font-bold">${min.toFixed(2)}</p>
                         </div>
                         <div class="bg-yellow-50 p-3 rounded-lg border border-yellow-200">
                             <p class="font-semibold text-yellow-600 text-xs">เฉลี่ย</p>
-                            <p class="text-2xl font-bold">${stats2025.avg.toFixed(2)}</p>
+                            <p class="text-2xl font-bold">${avg.toFixed(2)}</p>
                         </div>
                         <div class="bg-green-50 p-3 rounded-lg border border-green-200">
                             <p class="font-semibold text-green-600 text-xs">สูงสุด</p>
-                            <p class="text-2xl font-bold">${stats2025.max.toFixed(2)}</p>
-                        </div>
-                    </div>
-
-                    <!-- สถิติปี 2568 -->
-                    <p class="text-sm font-bold text-blue-700 mt-6 mb-2">📊 สถิติปี 2568</p>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                        <div class="bg-red-50 p-3 rounded-lg border border-red-200">
-                            <p class="font-semibold text-red-600 text-xs">ต่ำสุด</p>
-                            <p class="text-2xl font-bold">${stats2024.min.toFixed(2)}</p>
-                        </div>
-                        <div class="bg-yellow-50 p-3 rounded-lg border border-yellow-200">
-                            <p class="font-semibold text-yellow-600 text-xs">เฉลี่ย</p>
-                            <p class="text-2xl font-bold">${stats2024.avg.toFixed(2)}</p>
-                        </div>
-                        <div class="bg-green-50 p-3 rounded-lg border border-green-200">
-                            <p class="font-semibold text-green-600 text-xs">สูงสุด</p>
-                            <p class="text-2xl font-bold">${stats2024.max.toFixed(2)}</p>
-                        </div>
-                    </div>
-
-                    <!-- สถิติเฉลี่ย 2 ปี -->
-                    <p class="text-sm font-bold text-purple-700 mt-6 mb-2">📊 ค่าเฉลี่ย 2 ปี (2568-2569)</p>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                        <div class="bg-red-50 p-3 rounded-lg border border-red-200">
-                            <p class="font-semibold text-red-600 text-xs">ต่ำสุด</p>
-                            <p class="text-2xl font-bold">${statsAvg.min.toFixed(2)}</p>
-                        </div>
-                        <div class="bg-yellow-50 p-3 rounded-lg border border-yellow-200">
-                            <p class="font-semibold text-yellow-600 text-xs">เฉลี่ย</p>
-                            <p class="text-2xl font-bold">${statsAvg.avg.toFixed(2)}</p>
-                        </div>
-                        <div class="bg-green-50 p-3 rounded-lg border border-green-200">
-                            <p class="font-semibold text-green-600 text-xs">สูงสุด</p>
-                            <p class="text-2xl font-bold">${statsAvg.max.toFixed(2)}</p>
+                            <p class="text-2xl font-bold">${max.toFixed(2)}</p>
                         </div>
                     </div>
                     
-                    <!-- จุดแข็ง / จุดที่ควรเสริม -->
+                    ${stats.note ? `<div class="text-xs text-gray-500 mt-3 text-center italic">* ${stats.note}</div>` : ''}
+                    
                     <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-                        ${analysis.strengths.length > 0 ? `
-                            <div class="strength-item p-4 rounded-lg">
-                                <h5 class="font-bold text-green-700 mb-2">จุดแข็ง</h5>
-                                <ul class="text-sm space-y-1">
-                                    ${analysis.strengths.map(s => `<li>✓ ${s}</li>`).join('')}
-                                </ul>
-                            </div>
-                        ` : '<div></div>'}
-                        
-                        ${analysis.weaknesses.length > 0 ? `
-                            <div class="weakness-item p-4 rounded-lg">
-                                <h5 class="font-bold text-yellow-700 mb-2">จุดที่ควรเสริม</h5>
-                                <ul class="text-sm space-y-1">
-                                    ${analysis.weaknesses.map(w => `<li>✗ ${w}</li>`).join('')}
-                                </ul>
-                            </div>
-                        ` : '<div></div>'}
+                        ${analysis.strengths.length > 0 ? `<div class="strength-item p-4 rounded-lg"><h5 class="font-bold text-green-700 mb-2">จุดแข็ง</h5><ul class="text-sm space-y-1">${analysis.strengths.map(s => `<li>✓ ${s}</li>`).join('')}</ul></div>` : '<div></div>'}
+                        ${analysis.weaknesses.length > 0 ? `<div class="weakness-item p-4 rounded-lg"><h5 class="font-bold text-yellow-700 mb-2">จุดที่ควรเสริม</h5><ul class="text-sm space-y-1">${analysis.weaknesses.map(w => `<li>✗ ${w}</li>`).join('')}</ul></div>` : '<div></div>'}
                     </div>
                     
-                    ${analysis.improvements.length > 0 ? `
-                        <div class="mt-4 improvement-item p-4 rounded-lg">
-                            <h5 class="font-bold text-blue-700 mb-2">ข้อแนะนำ</h5>
-                            <ul class="text-sm space-y-1">
-                                ${analysis.improvements.map(i => `<li>💡 ${i}</li>`).join('')}
-                            </ul>
-                        </div>
-                    ` : ''}
+                    ${analysis.improvements.length > 0 ? `<div class="mt-4 improvement-item p-4 rounded-lg"><h5 class="font-bold text-blue-700 mb-2">ข้อแนะนำ</h5><ul class="text-sm space-y-1">${analysis.improvements.map(i => `<li>💡 ${i}</li>`).join('')}</ul></div>` : ''}
                     
                     ${subjectAdviceTable}
                     ${summary}
@@ -2680,32 +2611,32 @@
             
             const adviceData = {
                 'EP': {
-                    math: { low: 'ทบทวนสูตรพื้นฐาน + ฝึกอ่านโจทย์และคำศัพท์เพิ่มเติม 📖🧮', medium: 'คะแนนอยู่ในเกณฑ์ดี 👏 เพิ่มความแม่นยำและลองฝึกโจทย์วิเคราะห์ที่ซับซ้อนขึ้น', high: 'ทำโจทย์ประยุกต์และโจทย์แข่งขันระดับสูง 🏆' },
-                    science: { low: 'ทบทวนหลักการและคำศัพท์วิทยาศาสตร์ 🔬 ลองวาด Mind Map', medium: 'มีพื้นฐานที่ดีแล้ว 💪 ลองฝึกโจทย์แนววิเคราะห์การทดลอง', high: 'ยอดเยี่ยม! ลองต่อยอดด้วยโจทย์วิเคราะห์การทดลอง + ภาษาอังกฤษ' },
-                    english: { low: 'ปูพื้นฐานการอ่านให้แข็งแกร่ง 📚 อ่านบทความสั้นๆ ทุกวัน', medium: 'พื้นฐานดีแล้ว ลองฝึก Reading Comprehension ที่ยาวขึ้น', high: 'ทักษะเฉียบคมมาก! ลองทำชุดทดสอบแนว Reasoning' }
+                    math: { low: 'ทบทวนสูตรพื้นฐาน + ฝึกอ่านโจทย์ 📖🧮', medium: 'คะแนนดี 👏 เพิ่มความแม่นยำ + โจทย์ซับซ้อน', high: 'ทำโจทย์ประยุกต์และแข่งขันระดับสูง 🏆' },
+                    science: { low: 'ทบทวนหลักการ + วาด Mind Map 🔬', medium: 'พื้นฐานดี 💪 ลองโจทย์วิเคราะห์การทดลอง', high: 'ยอดเยี่ยม! ต่อยอดด้วยโจทย์วิเคราะห์ + ภาษาอังกฤษ' },
+                    english: { low: 'ปูพื้นฐานการอ่าน 📚 อ่านบทความทุกวัน', medium: 'พื้นฐานดี ลอง Reading Comprehension ยาวขึ้น', high: 'ทักษะเฉียบคม! ลอง Reasoning Test' }
                 },
                 'GM': {
-                    math: { low: 'ทบทวนพื้นฐานให้แน่น แล้วลุยโจทย์วิเคราะห์หลายขั้นตอน', medium: 'มาถูกทางแล้ว! เพิ่มความเร็ว + โจทย์แนว สอวน.', high: 'ศักยภาพสูงมาก! ลองโจทย์แนวแข่งขันระดับสูง' },
-                    science: { low: 'ฝึกวิเคราะห์ข้อมูลจากตาราง/กราฟ 💡', medium: 'พื้นฐานดี ลองโจทย์วิเคราะห์การทดลอง', high: 'ยอดเยี่ยม! ลองโจทย์เชิงลึกที่ประยุกต์หลายความรู้' },
-                    english: { low: 'ปูพื้นฐานการอ่าน 📚', medium: 'พื้นฐานดี ลองบทความที่ซับซ้อนขึ้น', high: 'ยอดเยี่ยม! ลอง Reasoning/Critical Thinking' }
+                    math: { low: 'ทบทวนพื้นฐานให้แน่น แล้วลุยโจทย์หลายขั้นตอน', medium: 'ถูกทางแล้ว! เพิ่มความเร็ว + โจทย์ สอวน.', high: 'ศักยภาพสูง! ลองโจทย์แข่งขันระดับสูง' },
+                    science: { low: 'ฝึกวิเคราะห์ข้อมูลจากตาราง/กราฟ 💡', medium: 'พื้นฐานดี ลองโจทย์วิเคราะห์การทดลอง', high: 'ยอดเยี่ยม! โจทย์เชิงลึกประยุกต์หลายความรู้' },
+                    english: { low: 'ปูพื้นฐานการอ่าน 📚', medium: 'พื้นฐานดี ลองบทความซับซ้อนขึ้น', high: 'ยอดเยี่ยม! ลอง Reasoning/Critical Thinking' }
                 },
                 'SMTE': {
-                    math: { low: 'เพิ่มความเข้าใจที่มาของสูตร + จับเวลาทำข้อสอบ', medium: 'ทำได้ดี! ลองโจทย์คณิตประยุกต์', high: 'ยอดเยี่ยม! ลองโจทย์คณิตประยุกต์ที่ท้าทาย' },
-                    science: { low: 'ทบทวนเนื้อหาพื้นฐาน + ฝึกโจทย์ยาวๆ', medium: 'พื้นฐานดี ลองโจทย์วิเคราะห์ข้อมูล ตาราง กราฟ', high: 'พื้นฐานดีมาก! ลองโจทย์ สสวท. TEDET' }
+                    math: { low: 'เพิ่มความเข้าใจที่มาของสูตร + จับเวลา', medium: 'ทำได้ดี! ลองโจทย์คณิตประยุกต์', high: 'ยอดเยี่ยม! โจทย์คณิตประยุกต์ท้าทาย' },
+                    science: { low: 'ทบทวนพื้นฐาน + ฝึกโจทย์ยาวๆ', medium: 'พื้นฐานดี ลองโจทย์วิเคราะห์ข้อมูล', high: 'พื้นฐานดีมาก! ลองโจทย์ สสวท. TEDET' }
                 },
                 'Normal_In': {
-                    math: { low: 'ทบทวนสูตรพื้นฐานให้แม่นยำ + ฝึกทำโจทย์ซ้ำๆ', medium: 'มีความแม่นยำดี 👏 ฝึกโจทย์ประยุกต์', high: 'เยี่ยม! ลองโจทย์ปัญหาที่ท้าทายขึ้น' },
-                    science: { low: 'ทบทวนหลักการพื้นฐาน + Mind Map 🧪', medium: 'เก่งมาก! ลองโจทย์เชิงเหตุผล', high: 'เก่งมาก! ลองต่อยอดด้วยโจทย์วิเคราะห์' },
-                    english: { low: 'เริ่มจากคลังคำศัพท์ + อ่านบทความสั้น', medium: 'พื้นฐานดี 👏 ลองบทอ่านที่ยาวขึ้น', high: 'ทำได้ดีมาก! ศึกษา Grammar ที่ซับซ้อนขึ้น' },
-                    thai: { low: 'ฝึกอ่านจับใจความ + วิเคราะห์บทความ', medium: 'ทักษะดี 👏 ลองบทความที่ซับซ้อนขึ้น', high: 'ยอดเยี่ยม! ลองอ่านบทวิเคราะห์ที่ยาวขึ้น' },
-                    social: { low: 'อ่านสรุป + เน้นคำสำคัญ (Keywords) 📰', medium: 'เข้าใจดี 👏 ลองโจทย์วิเคราะห์สถานการณ์', high: 'ยอดเยี่ยม! ติดตามข่าวสารสม่ำเสมอ 📰✨' }
+                    math: { low: 'ทบทวนสูตรพื้นฐาน + ฝึกโจทย์ซ้ำๆ', medium: 'แม่นยำดี 👏 ฝึกโจทย์ประยุกต์', high: 'เยี่ยม! ลองโจทย์ปัญหาท้าทายขึ้น' },
+                    science: { low: 'ทบทวนพื้นฐาน + Mind Map 🧪', medium: 'เก่งมาก! ลองโจทย์เชิงเหตุผล', high: 'เก่งมาก! โจทย์วิเคราะห์' },
+                    english: { low: 'เริ่มจากคลังคำศัพท์ + อ่านบทความสั้น', medium: 'พื้นฐานดี 👏 ลองบทอ่านยาวขึ้น', high: 'ทำได้ดีมาก! Grammar ซับซ้อนขึ้น' },
+                    thai: { low: 'ฝึกอ่านจับใจความ + วิเคราะห์', medium: 'ทักษะดี 👏 ลองบทความซับซ้อนขึ้น', high: 'ยอดเยี่ยม! อ่านบทวิเคราะห์ยาวขึ้น' },
+                    social: { low: 'อ่านสรุป + เน้น Keywords 📰', medium: 'เข้าใจดี 👏 ลองโจทย์วิเคราะห์สถานการณ์', high: 'ยอดเยี่ยม! ติดตามข่าวสารสม่ำเสมอ 📰✨' }
                 },
                 'Normal_Out': {
-                    math: { low: 'ทบทวนสูตรพื้นฐาน + ฝึกทำโจทย์ซ้ำๆ', medium: 'มีความแม่นยำดี 👏 ฝึกโจทย์ประยุกต์', high: 'เยี่ยม! ลองโจทย์ปัญหาที่ท้าทายขึ้น' },
-                    science: { low: 'ทบทวนหลักการพื้นฐาน + Mind Map 🧪', medium: 'เก่งมาก! ลองโจทย์เชิงเหตุผล', high: 'เก่งมาก! ลองต่อยอดด้วยโจทย์วิเคราะห์' },
-                    english: { low: 'เริ่มจากคลังคำศัพท์ + อ่านบทความสั้น', medium: 'พื้นฐานดี 👏 ลองบทอ่านที่ยาวขึ้น', high: 'ทำได้ดีมาก! ศึกษา Grammar ที่ซับซ้อนขึ้น' },
-                    thai: { low: 'ฝึกอ่านจับใจความ + วิเคราะห์บทความ', medium: 'ทักษะดี 👏 ลองบทความที่ซับซ้อนขึ้น', high: 'ยอดเยี่ยม! ลองอ่านบทวิเคราะห์ที่ยาวขึ้น' },
-                    social: { low: 'อ่านสรุป + เน้นคำสำคัญ (Keywords) 📰', medium: 'เข้าใจดี 👏 ลองโจทย์วิเคราะห์สถานการณ์', high: 'ยอดเยี่ยม! ติดตามข่าวสารสม่ำเสมอ 📰✨' }
+                    math: { low: 'ทบทวนสูตรพื้นฐาน + ฝึกโจทย์ซ้ำๆ', medium: 'แม่นยำดี 👏 ฝึกโจทย์ประยุกต์', high: 'เยี่ยม! ลองโจทย์ปัญหาท้าทายขึ้น' },
+                    science: { low: 'ทบทวนพื้นฐาน + Mind Map 🧪', medium: 'เก่งมาก! ลองโจทย์เชิงเหตุผล', high: 'เก่งมาก! โจทย์วิเคราะห์' },
+                    english: { low: 'เริ่มจากคลังคำศัพท์ + อ่านบทความสั้น', medium: 'พื้นฐานดี 👏 ลองบทอ่านยาวขึ้น', high: 'ทำได้ดีมาก! Grammar ซับซ้อนขึ้น' },
+                    thai: { low: 'ฝึกอ่านจับใจความ + วิเคราะห์', medium: 'ทักษะดี 👏 ลองบทความซับซ้อนขึ้น', high: 'ยอดเยี่ยม! อ่านบทวิเคราะห์ยาวขึ้น' },
+                    social: { low: 'อ่านสรุป + เน้น Keywords 📰', medium: 'เข้าใจดี 👏 ลองโจทย์วิเคราะห์สถานการณ์', high: 'ยอดเยี่ยม! ติดตามข่าวสารสม่ำเสมอ 📰✨' }
                 }
             };
             
@@ -2717,34 +2648,23 @@
                     <h4 class="text-lg font-bold text-gray-800 mb-4">ข้อเสนอแนะเพื่อพัฒนา</h4>
                     <div class="overflow-x-auto">
                         <table class="w-full border-collapse border border-gray-300 text-sm">
-                            <thead>
-                                <tr class="bg-gray-100">
-                                    <th class="border border-gray-300 p-2">วิชา</th>
-                                    <th class="border border-gray-300 p-2">ข้อเสนอแนะ</th>
-                                </tr>
-                            </thead>
+                            <thead><tr class="bg-gray-100"><th class="border border-gray-300 p-2">วิชา</th><th class="border border-gray-300 p-2">ข้อเสนอแนะ</th></tr></thead>
                             <tbody>
             `;
             
             Object.keys(currentAdvice).forEach(subject => {
-                const subjectKey = subject;
                 const subjectName = subject === 'math' ? 'คณิตศาสตร์' : 
                                   subject === 'science' ? 'วิทยาศาสตร์' : 
                                   subject === 'english' ? 'ภาษาอังกฤษ' : 
                                   subject === 'thai' ? 'ภาษาไทย' : 'สังคมศึกษา';
                 
-                const score = preTestScores[subjectKey] || 0;
+                const score = preTestScores[subject] || 0;
                 const threshold = currentThresholds[subject] || { low: 0, medium: 0, high: 0 };
                 
                 let advice = score < threshold.medium ? currentAdvice[subject].low : score < threshold.high ? currentAdvice[subject].medium : currentAdvice[subject].high;
                 let rowClass = score < threshold.medium ? 'bg-red-50' : score < threshold.high ? 'bg-yellow-50' : 'bg-green-50';
                 
-                tableHTML += `
-                    <tr class="${rowClass}">
-                        <td class="border border-gray-300 p-2 font-medium">${subjectName}</td>
-                        <td class="border border-gray-300 p-2">${advice}</td>
-                    </tr>
-                `;
+                tableHTML += `<tr class="${rowClass}"><td class="border border-gray-300 p-2 font-medium">${subjectName}</td><td class="border border-gray-300 p-2">${advice}</td></tr>`;
             });
             
             tableHTML += `</tbody></table></div></div>`;
@@ -2758,26 +2678,21 @@
             
             if (preTestTotal <= threshold.low) {
                 switch(target) {
-                    case 'EP': summaryText = "ผลคะแนนในครั้งนี้ยังไม่เป็นไปตามเป้าหมาย แต่ถือเป็นโอกาสดีในการพัฒนาทักษะเพิ่มเติมค่ะ หากน้องเสริมพื้นฐานและฝึกทำโจทย์อย่างต่อเนื่อง เราเชื่อว่าน้องทำได้ ✨"; break;
-                    case 'GM': summaryText = "ผลคะแนนรอบนี้อาจยังไม่สะท้อนศักยภาพเต็มที่ แต่เป็นโอกาสดีในการเห็นจุดที่พัฒนาได้ 😊 ลองทบทวนพื้นฐานและฝึกโจทย์วิเคราะห์เพิ่ม สู้ไปด้วยกันนะ 💪✨"; break;
-                    case 'SMTE': summaryText = "ผลคะแนนรอบนี้เป็นจุดเริ่มต้นในการเตรียมตัวค่ะ น้องสามารถเสริมพื้นฐานและฝึกการตีความโจทย์เพิ่มเติม ด้วยการทำแบบฝึกหัดสม่ำเสมอ เชื่อว่าน้องมีศักยภาพทำได้ดีแน่นอน 💪✨"; break;
-                    default: summaryText = "คะแนนอยู่ในระดับที่ควรพัฒนา แนะนำให้ทบทวนเนื้อหาแต่ละวิชาสม่ำเสมอ และทำแบบฝึกหัดเพิ่ม เพื่อเสริมความมั่นใจค่ะ";
+                    case 'EP': summaryText = "ผลคะแนนครั้งนี้ยังไม่ตามเป้า แต่เป็นโอกาสดีในการพัฒนา หากเสริมพื้นฐานและฝึกโจทย์ต่อเนื่อง เราเชื่อว่าน้องทำได้ ✨"; break;
+                    case 'GM': summaryText = "ผลคะแนนอาจยังไม่สะท้อนศักยภาพเต็มที่ แต่เป็นโอกาสดีในการเห็นจุดพัฒนา 😊 ลองทบทวนพื้นฐานและฝึกโจทย์วิเคราะห์ สู้ไปด้วยกันนะ 💪✨"; break;
+                    case 'SMTE': summaryText = "ผลคะแนนรอบนี้เป็นจุดเริ่มต้น น้องสามารถเสริมพื้นฐานและฝึกตีความโจทย์ ด้วยการทำแบบฝึกหัดสม่ำเสมอ เชื่อว่าน้องทำได้ดีแน่นอน 💪✨"; break;
+                    default: summaryText = "คะแนนควรพัฒนา แนะนำทบทวนเนื้อหาแต่ละวิชาสม่ำเสมอ และทำแบบฝึกหัดเพิ่มค่ะ";
                 }
             } else {
                 switch(target) {
-                    case 'EP': summaryText = "ผลคะแนนอยู่ในเกณฑ์ดี สะท้อนความพร้อมในภาพรวมของหลักสูตร EP แล้ว ต่อยอดด้วยการฝึกโจทย์ยากขึ้น + เพิ่มความเร็ว–ความแม่นยำค่ะ"; break;
-                    case 'GM': summaryText = "คะแนนอยู่ในระดับดี สื่อว่าน้องมีความพร้อมด้านการคิดวิเคราะห์เบื้องต้น ต่อยอดด้วยโจทย์ระดับสูงขึ้นหรือชุดทดสอบแนว Gifted ค่ะ"; break;
-                    case 'SMTE': summaryText = "คะแนนอยู่ในระดับดี แสดงความพร้อมพื้นฐานสายวิทย์–คณิต ต่อยอดด้วยข้อสอบเชิงลึกเพิ่มเติมค่ะ"; break;
-                    default: summaryText = "ผลคะแนนดีในภาพรวม สะท้อนความพร้อมสำหรับการสอบเข้าห้องปกติ ต่อยอดด้วยการทำข้อสอบจับเวลา และทบทวนเนื้อหาที่ต้องการให้เด่นขึ้นค่ะ";
+                    case 'EP': summaryText = "ผลคะแนนดี สะท้อนความพร้อมในหลักสูตร EP ต่อยอดด้วยโจทย์ยากขึ้น + เพิ่มความเร็ว–แม่นยำค่ะ"; break;
+                    case 'GM': summaryText = "คะแนนดี สื่อความพร้อมด้านคิดวิเคราะห์ ต่อยอดด้วยโจทย์ระดับสูงหรือชุดทดสอบแนว Gifted ค่ะ"; break;
+                    case 'SMTE': summaryText = "คะแนนดี แสดงความพร้อมพื้นฐานสายวิทย์–คณิต ต่อยอดด้วยข้อสอบเชิงลึกค่ะ"; break;
+                    default: summaryText = "ผลคะแนนดี สะท้อนความพร้อมสำหรับการสอบเข้าห้องปกติ ต่อยอดด้วยการทำข้อสอบจับเวลา และทบทวนเนื้อหาที่ต้องการให้เด่นขึ้นค่ะ";
                 }
             }
             
-            return `
-                <div class="mt-8 p-4 bg-blue-50 rounded-lg">
-                    <h4 class="text-lg font-bold text-blue-800 mb-2">สรุปผลการวิเคราะห์</h4>
-                    <p class="text-gray-700 summary-text">${summaryText}</p>
-                </div>
-            `;
+            return `<div class="mt-8 p-4 bg-blue-50 rounded-lg"><h4 class="text-lg font-bold text-blue-800 mb-2">สรุปผลการวิเคราะห์</h4><p class="text-gray-700 summary-text">${summaryText}</p></div>`;
         }
 
         // ==================== PDF EXPORT ====================
@@ -2800,22 +2715,9 @@
             const doc = iframe.contentWindow.document;
             doc.open();
             doc.write(`
-                <!DOCTYPE html>
-                <html lang="th">
-                <head>
-                    <title>รายงานผลการวิเคราะห์</title>
-                    <meta charset="UTF-8">
-                    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
-                </head>
-                <body>
-                    ${content}
-                    <script>
-                        window.onload = function() {
-                            setTimeout(function() { window.print(); }, 1500);
-                        };
-                    <\/script>
-                </body>
-                </html>
+                <!DOCTYPE html><html lang="th"><head><title>รายงาน</title><meta charset="UTF-8">
+                <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+                </head><body>${content}<script>window.onload=function(){setTimeout(function(){window.print();},1500);};<\/script></body></html>
             `);
             doc.close();
 
@@ -2837,6 +2739,7 @@
                     .bg-green { background-color: #f0fdf4 !important; }
                     .bg-yellow { background-color: #fefce8 !important; }
                     .bg-red { background-color: #fef2f2 !important; }
+                    .bg-orange { background-color: #fff7ed !important; }
                     .text-center { text-align: center; }
                     .font-bold { font-weight: bold; }
                     .bg-note { background-color: #fffbeb !important; border-color: #fcd34d; color: #92400e; }
@@ -2865,16 +2768,20 @@
 
             const activeTab = document.querySelector('.analysis-tab.active') || document.querySelector('.analysis-tab');
             if (activeTab) {
-                const tabId = activeTab.id;
-                const contentId = tabId.replace('analysis-tab', 'analysis-content');
-                const activeTabContent = document.getElementById(contentId);
+                const contentId = activeTab.id.replace('analysis-tab', 'analysis-content');
+                const tabContent = document.getElementById(contentId);
 
-                if (activeTabContent) {
-                    const title = activeTabContent.querySelector('h3')?.textContent || 'การวิเคราะห์คะแนน';
+                if (tabContent) {
+                    const title = tabContent.querySelector('h3')?.textContent || 'การวิเคราะห์';
                     content += `<h3 style="font-size:18px; border-bottom:1px solid #ccc; padding-bottom:5px; margin-top:20px;">${title}</h3>`;
 
-                    const preTestScore = activeTabContent.querySelector('.text-3xl.text-blue-600')?.textContent || '-';
-                    const projectedScore = activeTabContent.querySelector('.text-3xl.text-green-600')?.textContent || '-';
+                    const yearLabel = tabContent.querySelector('.bg-orange-50 span')?.textContent || '';
+                    if (yearLabel) {
+                        content += `<div class="box bg-orange text-center"><p style="margin:0;"><strong>${yearLabel}</strong></p></div>`;
+                    }
+
+                    const preTestScore = tabContent.querySelector('.text-3xl.text-blue-600')?.textContent || '-';
+                    const projectedScore = tabContent.querySelector('.text-3xl.text-green-600')?.textContent || '-';
                     
                     content += `
                         <table style="width:100%; margin-bottom:15px;">
@@ -2895,7 +2802,7 @@
                         </table>
                     `;
 
-                    const chanceElement = activeTabContent.querySelector('.chance-high, .chance-medium, .chance-low');
+                    const chanceElement = tabContent.querySelector('.chance-high, .chance-medium, .chance-low');
                     if (chanceElement) {
                         const chanceText = chanceElement.querySelector('h4')?.textContent || '';
                         const chanceDesc = chanceElement.querySelector('p')?.textContent || '';
@@ -2903,15 +2810,10 @@
                         if (chanceElement.classList.contains('chance-high')) bgClass = 'bg-green';
                         if (chanceElement.classList.contains('chance-low')) bgClass = 'bg-red';
                         
-                        content += `
-                            <div class="box ${bgClass} text-center">
-                                <h4 style="margin:0 0 5px 0; font-size:16px;">${chanceText}</h4>
-                                <p style="margin:0; font-size:14px;">${chanceDesc}</p>
-                            </div>
-                        `;
+                        content += `<div class="box ${bgClass} text-center"><h4 style="margin:0 0 5px 0; font-size:16px;">${chanceText}</h4><p style="margin:0; font-size:14px;">${chanceDesc}</p></div>`;
                     }
 
-                    const tables = activeTabContent.querySelectorAll('table');
+                    const tables = tabContent.querySelectorAll('table');
                     if (tables.length > 0) {
                         content += `<h4 style="margin-top:20px; font-size:16px;">คะแนนรายวิชา</h4>`;
                         content += `<table class="report-table"><thead><tr><th style="width:40%">วิชา</th><th style="width:30%">คะแนน Pre-test</th><th style="width:30%">เทียบเคียง</th></tr></thead><tbody>`;
@@ -2925,8 +2827,8 @@
                         content += `</tbody></table>`;
                     }
                     
-                    const strEl = activeTabContent.querySelector('.strength-item');
-                    const weakEl = activeTabContent.querySelector('.weakness-item');
+                    const strEl = tabContent.querySelector('.strength-item');
+                    const weakEl = tabContent.querySelector('.weakness-item');
                     
                     if (strEl || weakEl) {
                         content += `<table style="width:100%; margin-top:15px;"><tr>`;
@@ -2959,18 +2861,18 @@
                         content += `</tbody></table>`;
                     }
                     
-                    const summaryEl = activeTabContent.querySelector('.summary-text');
+                    const summaryEl = tabContent.querySelector('.summary-text');
                     if (summaryEl) {
                         content += `<div class="box bg-blue" style="margin-top:20px;"><h4 style="color:#1e3a8a; margin:0 0 5px 0; font-size:16px;">สรุปผลการวิเคราะห์</h4><p style="margin:0; font-size:14px;">${summaryEl.textContent}</p></div>`;
                     }
                 
-                    content += `<div class="box bg-note" style="margin-top:15px;"><p style="margin:0; font-size:12px;"><strong>หมายเหตุ:</strong> การวิเคราะห์นี้เป็นการประเมินเบื้องต้นจากคะแนน Pre-test เท่านั้น และใช้ข้อมูลคะแนนสอบเข้าปี 2569 และ 2568 เป็นเกณฑ์เปรียบเทียบ</p></div>`;
+                    content += `<div class="box bg-note" style="margin-top:15px;"><p style="margin:0; font-size:12px;"><strong>หมายเหตุ:</strong> การวิเคราะห์นี้เป็นการประเมินเบื้องต้นจากคะแนน Pre-test เท่านั้น</p></div>`;
                 }
             }
 
             content += `
                 <div style="margin-top:30px; border-top:1px solid #ccc; padding-top:10px; text-align:center; font-size:12px; color:#666;">
-                    <p style="margin:2px;">รายงานนี้สร้างโดยระบบสำรวจคะแนน Pre-test สตรีวิทยา 2570 | ออกแบบและสรุปผลโดย ลุ้นสอวอไปด้วยกันนะ</p>
+                    <p style="margin:2px;">รายงานนี้สร้างโดยระบบสำรวจคะแนน Pre-test สตรีวิทยา 2570</p>
                     <p style="margin:2px;">Line OPC : ครอบครัวยอดนารี❤️สตรีวิทยา</p>
                 </div>
             `;
@@ -2983,7 +2885,7 @@
             const password = document.getElementById('admin-password').value;
             if (password === ADMIN_PASSWORD) {
                 isAdminLoggedIn = true;
-                showMessage('เข้าสู่ระบบผู้ดูแลสำเร็จ', 'success');
+                showMessage('เข้าสู่ระบบสำเร็จ', 'success');
                 switchView('admin-panel');
             } else {
                 showMessage('รหัสผ่านไม่ถูกต้อง', 'error');
@@ -2993,7 +2895,7 @@
 
         window.adminLogout = () => {
             isAdminLoggedIn = false;
-            showMessage('ออกจากระบบผู้ดูแลเรียบร้อย', 'info');
+            showMessage('ออกจากระบบเรียบร้อย', 'info');
             switchView('dashboard');
         };
 
@@ -3003,26 +2905,21 @@
                 isDataFetched = false;
                 await fetchScoresFromFirebase(false, true);
                 
-                // กรองตามปีที่เลือก
-                const filteredForStats = allScores.filter(s => currentAdminYear === 'all' || getEntryYear(s) == currentAdminYear);
+                const filtered = allScores.filter(s => currentAdminYear === 'all' || getEntryYear(s) == currentAdminYear);
+                document.getElementById('admin-total-records').textContent = filtered.length;
                 
-                document.getElementById('admin-total-records').textContent = filteredForStats.length;
-                
-                if (filteredForStats.length > 0) {
-                    const latestRecord = filteredForStats[0];
-                    const timestamp = latestRecord.timestamp ? new Date(latestRecord.timestamp.seconds * 1000).toLocaleDateString('th-TH') : 'ไม่ทราบวันที่';
-                    document.getElementById('admin-latest-record').textContent = timestamp;
+                if (filtered.length > 0 && filtered[0].timestamp) {
+                    document.getElementById('admin-latest-record').textContent = new Date(filtered[0].timestamp.seconds * 1000).toLocaleDateString('th-TH');
                 } else {
                     document.getElementById('admin-latest-record').textContent = '-';
                 }
                 
                 document.getElementById('admin-data-source-info').innerHTML = 
-                    '<i class="fas fa-cloud mr-2"></i>แสดงข้อมูลจาก Firebase (' + allScores.length + ' รายการ) - อัปเดตล่าสุด: ' + new Date().toLocaleTimeString('th-TH');
+                    '<i class="fas fa-cloud mr-2"></i>แสดงข้อมูลจาก Firebase (' + allScores.length + ' รายการ)';
                 
                 renderAdminTable();
             } catch (error) {
-                console.error('Error loading admin data:', error);
-                showMessage('ไม่สามารถโหลดข้อมูลได้: ' + error.message, 'error');
+                console.error(error);
             } finally {
                 document.getElementById('admin-loading-indicator').classList.add('hidden');
             }
@@ -3034,16 +2931,14 @@
             const tableBody = document.getElementById('admin-table-body');
             if (!tableBody) return;
             
-            // กรองตามปี
             const filtered = allScores.filter(s => currentAdminYear === 'all' || getEntryYear(s) == currentAdminYear);
             
             if (filtered.length === 0) {
-                tableBody.innerHTML = '<tr><td colspan="7" class="text-center py-6 text-gray-500">ไม่พบข้อมูลตามตัวกรอง</td></tr>';
+                tableBody.innerHTML = '<tr><td colspan="7" class="text-center py-6 text-gray-500">ไม่พบข้อมูล</td></tr>';
                 return;
             }
             
             let rows = '';
-            
             filtered.forEach(score => {
                 const timestamp = score.timestamp ? 
                     new Date(score.timestamp.seconds * 1000).toLocaleDateString('th-TH') + ' ' + 
@@ -3056,17 +2951,7 @@
                 const examEntries = Object.entries(score.scores || {});
                 
                 if (examEntries.length === 0) {
-                    rows += `
-                        <tr class="bg-white border-b hover:bg-gray-50">
-                            <td class="py-3 px-4">${timestamp}</td>
-                            <td class="py-3 px-4">${yearBadge}</td>
-                            <td class="py-3 px-4">${score.nickname}</td>
-                            <td class="py-3 px-4">${getGradeText(score.currentGrade)}</td>
-                            <td class="py-3 px-4 text-red-500">ไม่มีข้อมูลคะแนน</td>
-                            <td class="py-3 px-4 text-right">-</td>
-                            <td class="py-3 px-4"><button onclick="deleteRecord('${score.id}')" class="delete-btn"><i class="fas fa-trash mr-1"></i> ลบ</button></td>
-                        </tr>
-                    `;
+                    rows += `<tr class="bg-white border-b"><td class="py-3 px-4">${timestamp}</td><td class="py-3 px-4">${yearBadge}</td><td class="py-3 px-4">${score.nickname}</td><td class="py-3 px-4">${getGradeText(score.currentGrade)}</td><td class="py-3 px-4 text-red-500">ไม่มีคะแนน</td><td class="py-3 px-4 text-right">-</td><td class="py-3 px-4"><button onclick="deleteRecord('${score.id}')" class="delete-btn"><i class="fas fa-trash mr-1"></i> ลบ</button></td></tr>`;
                     return;
                 }
 
@@ -3082,9 +2967,7 @@
                             <td class="py-3 px-4">${index === 0 ? getGradeText(score.currentGrade) : ''}</td>
                             <td class="py-3 px-4">${curriculum} (${examType})</td>
                             <td class="py-3 px-4 text-right">${(examData.totalScore || 0).toFixed(2)}</td>
-                            <td class="py-3 px-4">
-                                ${index === 0 ? `<button onclick="deleteRecord('${score.id}')" class="delete-btn"><i class="fas fa-trash mr-1"></i> ลบ</button>` : ''}
-                            </td>
+                            <td class="py-3 px-4">${index === 0 ? `<button onclick="deleteRecord('${score.id}')" class="delete-btn"><i class="fas fa-trash mr-1"></i> ลบ</button>` : ''}</td>
                         </tr>
                     `;
                 });
@@ -3095,18 +2978,17 @@
 
         window.deleteRecord = async (recordId) => {
             if (!confirm('⚠️ คุณต้องการลบข้อมูลนี้ใช่ไหม?')) return;
-            if (!confirm('⚠️⚠️ คุณแน่ใจหรือไม่?\nข้อมูลนี้จะถูกลบถาวร')) return;
+            if (!confirm('⚠️⚠️ ยืนยันอีกครั้ง ข้อมูลจะถูกลบถาวร')) return;
             
             try {
-                showMessage('กำลังลบข้อมูล...', 'info');
+                showMessage('กำลังลบ...', 'info');
                 await db.collection('pretestScores').doc(recordId).delete();
-                showMessage('✅ ลบข้อมูลสำเร็จแล้ว', 'success');
+                showMessage('✅ ลบข้อมูลสำเร็จ', 'success');
                 isDataFetched = false;
-                
                 if (currentView === 'admin-panel') loadAdminData();
                 else if (currentView === 'results') fetchScoresFromFirebase(true, true);
             } catch (error) {
-                showMessage('❌ ลบข้อมูลไม่สำเร็จ: ' + error.message, 'error');
+                showMessage('❌ ลบไม่สำเร็จ: ' + error.message, 'error');
             }
         };
 
@@ -3132,7 +3014,7 @@
                 isDataFetched = false;
                 loadAdminData();
             } catch (error) {
-                showMessage('ไม่สามารถลบข้อมูลทั้งหมดได้: ' + error.message, 'error');
+                showMessage('ไม่สามารถลบได้: ' + error.message, 'error');
             } finally {
                 closeDeleteAllModal();
             }
@@ -3140,17 +3022,13 @@
         
         window.exportToExcel = () => {
             if (allScores.length === 0) {
-                showMessage('ไม่มีข้อมูลที่จะส่งออก', 'error');
+                showMessage('ไม่มีข้อมูล', 'error');
                 return;
             }
             
             try {
                 const excelData = [];
-                excelData.push([
-                    'วันที่บันทึก', 'ปี', 'ชื่อ', 'ระดับชั้น', 'ประเภทสอบ (Key)', 'หลักสูตร', 'รูปแบบสอบ',
-                    'อันดับ', 'คะแนนรวม', 'คณิตศาสตร์', 'วิทยาศาสตร์', 
-                    'ภาษาอังกฤษ', 'ภาษาไทย', 'สังคมศึกษา', 'เป้าหมายพิเศษ', 'เป้าหมายปกติ', 'ID'
-                ]);
+                excelData.push(['วันที่บันทึก', 'ปี', 'ชื่อ', 'ระดับชั้น', 'ประเภทสอบ (Key)', 'หลักสูตร', 'รูปแบบสอบ', 'อันดับ', 'คะแนนรวม', 'คณิตศาสตร์', 'วิทยาศาสตร์', 'ภาษาอังกฤษ', 'ภาษาไทย', 'สังคมศึกษา', 'เป้าหมายพิเศษ', 'เป้าหมายปกติ', 'ID']);
                 
                 allScores.forEach(score => {
                     const timestamp = score.timestamp ? new Date(score.timestamp.seconds * 1000).toISOString() : 'ไม่ทราบวันที่';
@@ -3175,16 +3053,12 @@
                 
                 const wb = XLSX.utils.book_new();
                 const ws = XLSX.utils.aoa_to_sheet(excelData);
-                ws['!cols'] = [
-                    { wch: 20 }, { wch: 8 }, { wch: 15 }, { wch: 10 }, { wch: 15 }, { wch: 15 }, { wch: 15 },
-                    { wch: 8 }, { wch: 12 }, { wch: 12 }, { wch: 12 },
-                    { wch: 12 }, { wch: 12 }, { wch: 12 }, { wch: 20 }, { wch: 20 }, { wch: 25 }
-                ];
+                ws['!cols'] = [{ wch: 20 }, { wch: 8 }, { wch: 15 }, { wch: 10 }, { wch: 15 }, { wch: 15 }, { wch: 15 }, { wch: 8 }, { wch: 12 }, { wch: 12 }, { wch: 12 }, { wch: 12 }, { wch: 12 }, { wch: 12 }, { wch: 20 }, { wch: 20 }, { wch: 25 }];
                 XLSX.utils.book_append_sheet(wb, ws, 'คะแนน Pre-test');
                 XLSX.writeFile(wb, `satriwit-pretest-data-${new Date().toISOString().split('T')[0]}.xlsx`);
-                showMessage('ส่งออกข้อมูลเป็น Excel สำเร็จ', 'success');
+                showMessage('ส่งออก Excel สำเร็จ', 'success');
             } catch (error) {
-                showMessage('ไม่สามารถส่งออกข้อมูลได้: ' + error.message, 'error');
+                showMessage('ไม่สามารถส่งออกได้: ' + error.message, 'error');
             }
         };
 
@@ -3196,7 +3070,7 @@
             
             document.getElementById('confirm-delete-all').addEventListener('click', function() {
                 if (document.getElementById('delete-all-confirmation').value === 'DELETE ALL') deleteAllRecords();
-                else showMessage('กรุณาพิมพ์ "DELETE ALL" ให้ถูกต้อง', 'error');
+                else showMessage('กรุณาพิมพ์ "DELETE ALL"', 'error');
             });
             
             document.getElementById('cancel-delete-all').addEventListener('click', closeDeleteAllModal);
