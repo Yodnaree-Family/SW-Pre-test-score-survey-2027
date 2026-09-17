@@ -219,7 +219,6 @@
         .subject-table .score-pretest { font-weight: 600; color: #3b82f6; }
         .subject-table .score-projected { font-weight: 600; color: #16a34a; }
 
-        /* 🆕 Year Badge Styles */
         .year-badge {
             display: inline-block;
             padding: 0.15rem 0.5rem;
@@ -239,7 +238,6 @@
             color: #4b5563;
         }
 
-        /* 🆕 Year Filter Bar */
         .year-filter-bar {
             background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
             border: 2px solid #bfdbfe;
@@ -278,7 +276,6 @@
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
         }
         
-        /* ✅ แก้ไข: ปุ่ม active ทั่วไป */
         .year-pill.active {
             background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
             color: white !important;
@@ -286,7 +283,6 @@
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35) !important;
         }
         
-        /* ✅ แก้ไข: ปุ่ม "ทั้งหมด" */
         .year-pill.all {
             background: white;
             color: #6b7280;
@@ -303,7 +299,6 @@
             box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4) !important;
         }
 
-        /* 🆕 Improved Stat Card */
         .stat-card-new {
             background: white;
             border-radius: 1rem;
@@ -414,7 +409,6 @@
             box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
         }
         
-        /* 🆕 Analysis Tabs */
         .analysis-tab {
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
@@ -428,9 +422,7 @@
             font-size: 0.875rem;
         }
         
-        .analysis-tab:hover {
-            background: #f3f4f6;
-        }
+        .analysis-tab:hover { background: #f3f4f6; }
         
         .analysis-tab.active {
             background-color: #e0e7ff;
@@ -438,15 +430,9 @@
             border-color: #a5b4fc;
         }
         
-        .analysis-tab-content {
-            display: none;
-        }
-        
-        .analysis-tab-content.active {
-            display: block !important;
-        }
+        .analysis-tab-content { display: none; }
+        .analysis-tab-content.active { display: block !important; }
 
-        /* 🆕 Comparison Year Dropdown */
         .comparison-selector {
             background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
             border: 2px solid #fcd34d;
@@ -488,41 +474,13 @@
             box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
         }
         
-        /* 🆕 Comparison Stat Cards */
-        .comparison-card-selected {
-            border: 3px solid #f59e0b !important;
-            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3) !important;
-            transform: scale(1.02);
-            transition: all 0.3s ease;
-        }
-        
-        .comparison-card-dimmed {
-            opacity: 0.5;
-            transition: all 0.3s ease;
-        }
-        
-        .comparison-year-label {
-            display: inline-block;
-            background: linear-gradient(135deg, #f59e0b, #fbbf24);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        
         @media print {
             body * { visibility: hidden; }
             .print-section, .print-section * { visibility: visible; }
             .print-section { position: absolute; left: 0; top: 0; width: 100%; padding: 0; margin: 0; }
             .no-print { display: none !important; }
             .chart-container-improved { height: 250px !important; page-break-inside: avoid; }
-            .dashboard-card, .chart-card {
-                box-shadow: none !important;
-                border: 1px solid #ddd !important;
-                page-break-inside: avoid;
-            }
+            .dashboard-card, .chart-card { box-shadow: none !important; border: 1px solid #ddd !important; page-break-inside: avoid; }
             .analysis-tab-content { display: block !important; }
             .navigator-bar, .line-opc-section, footer { display: none !important; }
         }
@@ -559,7 +517,6 @@
 <body class="p-4 sm:p-6">
     <div id="message-box" class="fixed top-5 right-5 z-50 w-full max-w-sm"></div>
     
-    <!-- Confirmation Modal -->
     <div id="delete-all-modal" class="hidden" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:flex;justify-content:center;align-items:center;z-index:1000;">
         <div style="background:white;padding:2rem;border-radius:1rem;max-width:500px;width:90%;text-align:center;box-shadow:0 10px 25px rgba(0,0,0,0.2);">
             <h3 class="text-xl font-bold text-gray-800 mb-4">ยืนยันการลบข้อมูลทั้งหมด</h3>
@@ -573,7 +530,6 @@
         </div>
     </div>
     
-    <!-- Navigator Bar -->
     <div id="main-navigator" class="max-w-7xl mx-auto mb-4 navigator-bar">
         <div class="navigator-buttons">
             <button onclick="switchView('form')" class="navigator-btn active"><i class="fas fa-edit mr-2"></i> กรอกข้อมูล</button>
@@ -807,7 +763,6 @@
                 </div>
             </div>
             
-            <!-- Connection Status -->
             <div id="connection-status" class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6 text-yellow-800 rounded-r-lg hidden">
                 <div class="flex justify-between items-center">
                     <div>
@@ -820,7 +775,6 @@
                 </div>
             </div>
 
-            <!-- Success Message -->
             <div id="success-message" class="success-message hidden">
                 <i class="fas fa-check-circle text-3xl sm:text-4xl mb-4 text-green-600"></i>
                 <h3 class="text-xl sm:text-2xl font-bold mb-4">ส่งข้อมูลสำเร็จ! 🎉</h3>
@@ -1008,6 +962,17 @@
                         <p>เลือกปีที่ต้องการเปรียบเทียบได้จาก Dropdown ด้านล่าง</p>
                     </div>
                     
+                    <!-- 🆕 Info Box สำหรับ EP -->
+                    <div class="bg-orange-50 border-l-4 border-orange-400 p-4 mb-6 text-orange-800 rounded-r-lg text-sm">
+                        <h4 class="font-bold mb-2">
+                            <i class="fas fa-info-circle mr-2"></i>หมายเหตุการคำนวณคะแนนหลักสูตร EP
+                        </h4>
+                        <p>การวิเคราะห์หลักสูตร EP ใช้ <b>ค่าเฉลี่ยคะแนนสอบสัมภาษณ์ = 16.39 คะแนน</b></p>
+                        <p class="text-xs mt-1 opacity-80">
+                            📌 คำนวณจากผลการสอบจริงปี 2569 (กลุ่มตัวอย่าง 23 คน จากอันดับตัวจริง 60 คน)
+                        </p>
+                    </div>
+                    
                     <div class="print-header bg-indigo-50 p-6 rounded-lg mb-6 text-center">
                         <h1 class="text-2xl font-bold text-indigo-800">รายงานการวิเคราะห์คะแนน Pre-test</h1>
                         <h2 class="text-xl text-indigo-600 mt-2">โรงเรียนสตรีวิทยา ปีการศึกษา 2570</h2>
@@ -1020,7 +985,6 @@
                         <p><strong>ระดับชั้น:</strong> <span id="analysis-grade">-</span></p>
                     </div>
                     
-                    <!-- 🆕 Comparison Year Dropdown -->
                     <div class="comparison-selector">
                         <label for="comparison-year-select">
                             <i class="fas fa-balance-scale"></i> เปรียบเทียบกับ:
@@ -1190,7 +1154,7 @@
     </footer>
 
     <script>
-        // ==================== FIREBASE CONFIG ====================
+        // 🔥 Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyAB8o6jY8GO6H2kbIu31hPsMTBc3T8pBQU",
             authDomain: "y-sw-pretest-survey-project.firebaseapp.com",
@@ -1203,7 +1167,9 @@
         const app = firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // ==================== GLOBAL VARIABLES ====================
+        // ============================================
+        // Global Variables
+        // ============================================
         let allScores = [];
         let isDataFetched = false;
         let currentView = 'form';
@@ -1223,27 +1189,85 @@
         let currentResultsYear = '2570';
         let currentDashboardYear = '2570';
         let currentAdminYear = 'all';
-        
-        // 🆕 Comparison year selection for analysis
-        let currentComparisonYear = 'avg'; // '2569', '2568', 'avg'
+        let currentComparisonYear = 'avg';
 
-        // ==================== COMPARISON DATA ====================
-        // ปี 2568 (ข้อมูลเดิม)
+        // ============================================
+        // 📊 COMPARISON DATA - ปรับค่า EP ตาม interview 16.39
+        // ============================================
+        // ส่วนต่าง = 20 - 16.39 = 3.61 คะแนน
+        
+        // ปี 2568 (ปรับ -3.61 สำหรับ EP)
         const comparisonData2024 = {
-            'EP': { title: 'หลักสูตร EP (English Program)', max: 168.50, avg: 139.89, min: 119.17, fullScore: 200, chanceThresholds: { high: 145.00, medium: 130.00 }, note: "คำนวณบนสมมุติฐานที่ได้คะแนนในส่วนสัมภาษณ์เต็ม 20 คะแนน" },
-            'SMTE': { title: 'หลักสูตร SMTE', max: 77.25, avg: 58.58, min: 47.75, fullScore: 100, chanceThresholds: { high: 62.00, medium: 52.00 }, note: "หลักสูตร SMTE ไม่สอบวิชาภาษาอังกฤษจึงไม่นำมาใช้ในการคำนวณ" },
-            'GM': { title: 'หลักสูตร GM (Gifted Math)', max: 90.00, avg: 73.30, min: 66.00, fullScore: 110, chanceThresholds: { high: 75.00, medium: 68.00 }, note: "" },
-            'Normal_In': { title: 'หลักสูตรห้องเรียนปกติ (ในเขต)', max: 65.00, avg: 51.14, min: 42.00, fullScore: 100, chanceThresholds: { high: 55.00, medium: 46.00 }, note: "กลุ่มตัวอย่าง 7 คน" },
-            'Normal_Out': { title: 'หลักสูตรห้องเรียนปกติ (นอกเขต)', max: 58.50, avg: 50.33, min: 41.00, fullScore: 100, chanceThresholds: { high: 53.00, medium: 45.00 }, note: "" }
+            'EP': { 
+                title: 'หลักสูตร EP (English Program)', 
+                max: 164.89,       // 168.50 - 3.61
+                avg: 136.28,       // 139.89 - 3.61
+                min: 115.56,       // 119.17 - 3.61
+                fullScore: 200, 
+                chanceThresholds: { high: 141.39, medium: 126.39 },  // 145/130 - 3.61
+                note: "คะแนนสัมภาษณ์ใช้ค่าเฉลี่ยจริงปี 2569 = 16.39 คะแนน (กลุ่มตัวอย่าง 23 คน จากอันดับตัวจริง 60 คน | เต็ม 20 คะแนน)" 
+            },
+            'SMTE': { 
+                title: 'หลักสูตร SMTE', 
+                max: 77.25, avg: 58.58, min: 47.75, fullScore: 100, 
+                chanceThresholds: { high: 62.00, medium: 52.00 }, 
+                note: "หลักสูตร SMTE ไม่สอบวิชาภาษาอังกฤษจึงไม่นำมาใช้ในการคำนวณ" 
+            },
+            'GM': { 
+                title: 'หลักสูตร GM (Gifted Math)', 
+                max: 90.00, avg: 73.30, min: 66.00, fullScore: 110, 
+                chanceThresholds: { high: 75.00, medium: 68.00 }, 
+                note: "" 
+            },
+            'Normal_In': { 
+                title: 'หลักสูตรห้องเรียนปกติ (ในเขต)', 
+                max: 58.50, avg: 50.33, min: 41.00, fullScore: 100, 
+                chanceThresholds: { high: 53.00, medium: 45.00 }, 
+                note: "" 
+            },
+            'Normal_Out': { 
+                title: 'หลักสูตรห้องเรียนปกติ (นอกเขต)', 
+                max: 65.50, avg: 51.41, min: 44.00, fullScore: 100, 
+                chanceThresholds: { high: 54.00, medium: 47.00 }, 
+                note: "" 
+            }
         };
 
-        // ปี 2569 (ข้อมูลที่อัปเดต)
+        // ปี 2569 (ปรับ -3.61 สำหรับ EP)
         const comparisonData2025 = {
-            'EP': { title: 'หลักสูตร EP (English Program)', max: 153.5, avg: 123.62, min: 106.17, fullScore: 200, chanceThresholds: { high: 135.00, medium: 115.00 }, note: "คำนวณบนสมมุติฐานที่ได้คะแนนในส่วนสัมภาษณ์เต็ม 20 คะแนน (กลุ่มตัวอย่าง 36 คน)" },
-            'SMTE': { title: 'หลักสูตร SMTE', max: 73, avg: 63.45, min: 57, fullScore: 100, chanceThresholds: { high: 65.00, medium: 58.00 }, note: "หลักสูตร SMTE ไม่สอบวิชาภาษาอังกฤษ (กลุ่มตัวอย่าง 20 คน)" },
-            'GM': { title: 'หลักสูตร GM (Gifted Math)', max: 89, avg: 64.06, min: 55.5, fullScore: 110, chanceThresholds: { high: 70.00, medium: 60.00 }, note: "กลุ่มตัวอย่าง 39 คน" },
-            'Normal_In': { title: 'หลักสูตรห้องเรียนปกติ (ในเขต)', max: 65, avg: 51.14, min: 42, fullScore: 100, chanceThresholds: { high: 55.00, medium: 46.00 }, note: "ข้อมูลที่มีเป็นอันดับที่ 17 ไม่มีข้อมูลอันดับที่ 30 | กลุ่มตัวอย่าง 7 คน" },
-            'Normal_Out': { title: 'หลักสูตรห้องเรียนปกติ (นอกเขต)', max: 78.5, avg: 55.62, min: 46, fullScore: 100, chanceThresholds: { high: 58.00, medium: 50.00 }, note: "" }
+            'EP': { 
+                title: 'หลักสูตร EP (English Program)', 
+                max: 149.89,       // 153.50 - 3.61
+                avg: 120.01,       // 123.62 - 3.61
+                min: 102.56,       // 106.17 - 3.61
+                fullScore: 200, 
+                chanceThresholds: { high: 134.50, medium: 111.00 }, 
+                note: "คะแนนสัมภาษณ์ใช้ค่าเฉลี่ยจริงปี 2569 = 16.39 คะแนน (กลุ่มตัวอย่าง 23 คน จากอันดับตัวจริง 60 คน | เต็ม 20 คะแนน)" 
+            },
+            'SMTE': { 
+                title: 'หลักสูตร SMTE', 
+                max: 73, avg: 63.45, min: 57, fullScore: 100, 
+                chanceThresholds: { high: 65.00, medium: 58.00 }, 
+                note: "หลักสูตร SMTE ไม่สอบวิชาภาษาอังกฤษ (กลุ่มตัวอย่าง 20 คน)" 
+            },
+            'GM': { 
+                title: 'หลักสูตร GM (Gifted Math)', 
+                max: 89, avg: 64.06, min: 55.5, fullScore: 110, 
+                chanceThresholds: { high: 70.00, medium: 60.00 }, 
+                note: "กลุ่มตัวอย่าง 39 คน" 
+            },
+            'Normal_In': { 
+                title: 'หลักสูตรห้องเรียนปกติ (ในเขต)', 
+                max: 65, avg: 51.14, min: 42, fullScore: 100, 
+                chanceThresholds: { high: 55.00, medium: 46.00 }, 
+                note: "ข้อมูลที่มีเป็นอันดับที่ 17 ไม่มีข้อมูลอันดับที่ 30 | กลุ่มตัวอย่าง 7 คน" 
+            },
+            'Normal_Out': { 
+                title: 'หลักสูตรห้องเรียนปกติ (นอกเขต)', 
+                max: 78.5, avg: 55.62, min: 46, fullScore: 100, 
+                chanceThresholds: { high: 58.00, medium: 50.00 }, 
+                note: "" 
+            }
         };
 
         // คำนวณค่าเฉลี่ย 2 ปี
@@ -1270,7 +1294,9 @@
         }
         const averageComparisonData = getAverageComparisonData();
 
-        // ==================== UTILITY ====================
+        // ============================================
+        // Utility Functions
+        // ============================================
         function getEntryYear(entry) {
             return entry.year || LEGACY_FALLBACK_YEAR;
         }
@@ -1280,7 +1306,9 @@
             return `<span class="year-badge ${isCurrent ? 'current' : 'previous'}">${year}</span>`;
         }
 
-        // ==================== VIEW SWITCHER ====================
+        // ============================================
+        // View Switcher
+        // ============================================
         window.switchView = (view) => {
             currentView = view;
             
@@ -1320,7 +1348,9 @@
             }
         };
 
-        // ==================== YEAR FILTER HANDLERS ====================
+        // ============================================
+        // Year Filter Handlers
+        // ============================================
         window.setResultsYear = (year, btn) => {
             currentResultsYear = year;
             const bar = document.querySelector('#results-section .year-filter-bar');
@@ -1344,26 +1374,24 @@
             if (bar) bar.querySelectorAll('.year-pill').forEach(p => p.classList.remove('active'));
             btn.classList.add('active');
             
-            // อัปเดตสถิติ
             const filtered = allScores.filter(s => year === 'all' || getEntryYear(s) == year);
             document.getElementById('admin-total-records').textContent = filtered.length;
             if (filtered.length > 0 && filtered[0].timestamp) {
-                const latest = filtered[0];
-                document.getElementById('admin-latest-record').textContent = new Date(latest.timestamp.seconds * 1000).toLocaleDateString('th-TH');
+                document.getElementById('admin-latest-record').textContent = new Date(filtered[0].timestamp.seconds * 1000).toLocaleDateString('th-TH');
             } else {
                 document.getElementById('admin-latest-record').textContent = '-';
             }
-            
             renderAdminTable();
         };
 
-        // ==================== COMPARISON YEAR HANDLER ====================
         window.changeComparisonYear = (year) => {
             currentComparisonYear = year;
             renderAnalysis();
         };
 
-        // ==================== DASHBOARD FUNCTIONS ====================
+        // ============================================
+        // Dashboard Functions
+        // ============================================
         async function renderFullDashboard() {
             document.getElementById('dashboard-loading-indicator').classList.remove('hidden');
             document.getElementById('dashboard-charts-container').innerHTML = '';
@@ -1677,7 +1705,9 @@
             createExamTypeComparisonChart('grade6-comparison-chart', byGradeData.grade6);
         }
 
-        // ==================== FORM FUNCTIONS ====================
+        // ============================================
+        // Form Functions
+        // ============================================
         window.toggleExamType = (examType) => {
             const checkbox = document.getElementById(`${examType}-checkbox`);
             const card = checkbox.closest('.exam-type-card');
@@ -2101,7 +2131,9 @@
             }
         }
 
-        // ==================== RESULTS TABLE ====================
+        // ============================================
+        // Results Table
+        // ============================================
         function renderScoresTable() {
             const container = document.getElementById('results-pagination-container');
             if (!container) return;
@@ -2243,7 +2275,9 @@
             return map[gradeCode] || gradeCode;
         }
 
-        // ==================== ANALYSIS FUNCTIONS ====================
+        // ============================================
+        // ANALYSIS FUNCTIONS
+        // ============================================
         function renderAnalysis() {
             const container = document.getElementById('analysis-results-container');
             const tabsContainer = document.getElementById('analysis-tabs');
@@ -2298,7 +2332,6 @@
                     const analysisResult = calculateRealExamScore(currentScores, target, examType);
                     const tabKey = `${examTypeData.curriculum}_${examTypeData.examType}_${target}`;
                     
-                    // 🆕 ใช้ข้อมูลตาม currentComparisonYear
                     let statsToUse, yearLabel;
                     if (currentComparisonYear === '2569') {
                         statsToUse = comparisonData2025[target];
@@ -2368,12 +2401,8 @@
         }
 
         window.switchAnalysisTab = (tabId, contentId) => {
-            document.querySelectorAll('.analysis-tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            document.querySelectorAll('.analysis-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
+            document.querySelectorAll('.analysis-tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.analysis-tab').forEach(tab => tab.classList.remove('active'));
             
             const activeBtn = document.getElementById(tabId);
             if (activeBtn) activeBtn.classList.add('active');
@@ -2403,7 +2432,7 @@
                     projectedSubjects.math = (mathPre / mathMax) * 50;
                     projectedSubjects.science = (sciPre / sciMax) * 50;
                     projectedSubjects.english = (engPre / engMax) * 80;
-                    projectedSubjects.interview = 20;
+                    projectedSubjects.interview = 16.39; // 🆕 ค่าเฉลี่ยจริงปี 2569
                     projectedScore = projectedSubjects.math + projectedSubjects.science + projectedSubjects.english + projectedSubjects.interview;
                     break;
                 case 'GM':
@@ -2432,7 +2461,6 @@
         }
 
         function calculateAdmissionChance(projectedScore, stats) {
-            // Fallback ถ้าไม่มี chanceThresholds
             const thresholds = stats.chanceThresholds || { 
                 high: stats.avg * 1.05, 
                 medium: stats.avg * 0.95 
@@ -2484,7 +2512,6 @@
             return { strengths, weaknesses, improvements };
         }
 
-        // 🆕 ปรับ createAnalysisCard ให้ใช้ data object
         function createAnalysisCard(data) {
             const { stats, yearLabel, projectedScore, target, preTestTotal, currentScores, examType, projectedSubjects } = data;
             const { title, min, avg, max, fullScore } = stats;
@@ -2497,7 +2524,6 @@
             const chance = calculateAdmissionChance(projectedScore, stats);
             const analysis = analyzeStrengthsWeaknesses(currentScores, target, examType);
 
-            // ตารางรายวิชา
             let subjectTableHTML = '<table class="subject-table"><thead><tr><th>วิชา</th><th>คะแนน Pre-test</th><th>คะแนนที่เทียบได้</th></tr></thead><tbody>';
             
             if (projectedSubjects.math !== undefined) subjectTableHTML += `<tr><td>คณิตศาสตร์</td><td class="score-pretest">${currentScores.math.toFixed(2)}</td><td class="score-projected">${projectedSubjects.math.toFixed(2)}</td></tr>`;
@@ -2505,7 +2531,7 @@
             if (projectedSubjects.english !== undefined) subjectTableHTML += `<tr><td>ภาษาอังกฤษ</td><td class="score-pretest">${currentScores.english.toFixed(2)}</td><td class="score-projected">${projectedSubjects.english.toFixed(2)}</td></tr>`;
             if (projectedSubjects.thai !== undefined) subjectTableHTML += `<tr><td>ภาษาไทย</td><td class="score-pretest">${currentScores.thai.toFixed(2)}</td><td class="score-projected">${projectedSubjects.thai.toFixed(2)}</td></tr>`;
             if (projectedSubjects.social !== undefined) subjectTableHTML += `<tr><td>สังคมศึกษา</td><td class="score-pretest">${currentScores.social.toFixed(2)}</td><td class="score-projected">${projectedSubjects.social.toFixed(2)}</td></tr>`;
-            if (projectedSubjects.interview !== undefined) subjectTableHTML += `<tr><td>สัมภาษณ์ (สมมติฐาน)</td><td class="score-pretest">-</td><td class="score-projected">${projectedSubjects.interview.toFixed(2)}</td></tr>`;
+            if (projectedSubjects.interview !== undefined) subjectTableHTML += `<tr><td>สัมภาษณ์ (เฉลี่ย 16.39)</td><td class="score-pretest">-</td><td class="score-projected">${projectedSubjects.interview.toFixed(2)}</td></tr>`;
             subjectTableHTML += '</tbody></table>';
 
             const subjectAdviceTable = createSubjectAdviceTable(target, currentScores, examType);
@@ -2540,23 +2566,32 @@
                         <p class="text-sm">${chance.description}</p>
                     </div>
                     
-                    ${target === 'EP' ? `<div class="text-sm text-center bg-orange-100 text-orange-700 p-2 rounded-md mb-6"><b>*หมายเหตุ:</b> คำนวณโดยสมมติว่าได้คะแนนสัมภาษณ์เต็ม 20 คะแนน</div>` : ''}
+                    ${target === 'EP' ? 
+                        `<div class="text-sm text-center bg-orange-100 text-orange-700 p-3 rounded-md mb-6">
+                            <b>*หมายเหตุ:</b> คะแนนส่วนสัมภาษณ์ใช้ค่าเฉลี่ยจริงจากผลการสอบปี 2569 = <b>16.39 คะแนน</b>
+                            <br><span class="text-xs opacity-80">(กลุ่มตัวอย่าง 23 คน จากอันดับตัวจริง 60 คน | คะแนนเต็ม 20 คะแนน)</span>
+                        </div>` : ''
+                    }
                     
                     <p class="text-sm font-semibold text-gray-700 mb-2 mt-6">📍 เปรียบเทียบกับสถิติ ${yearLabel}</p>
                     <div class="relative h-8 bg-gray-200 rounded-full mb-4 w-full" style="margin-top: 2.5rem;">
                         <div class="absolute h-full bg-gradient-to-r from-red-400 via-yellow-400 to-green-400 rounded-full" style="width:100%;"></div>
+                        
                         <div class="absolute top-0 h-full flex items-center" style="left: ${minPercent}%;">
                             <div class="w-1 h-10 bg-red-600 -translate-x-1/2"></div>
                             <span class="absolute -top-6 -translate-x-1/2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">ต่ำสุด</span>
                         </div>
+                        
                         <div class="absolute top-0 h-full flex items-center" style="left: ${avgPercent}%;">
                             <div class="w-1 h-10 bg-yellow-600 -translate-x-1/2"></div>
                             <span class="absolute -top-6 -translate-x-1/2 bg-yellow-600 text-white text-xs font-bold px-2 py-1 rounded">เฉลี่ย</span>
                         </div>
+                        
                         <div class="absolute top-0 h-full flex items-center" style="left: ${maxPercent}%;">
                             <div class="w-1 h-10 bg-green-600 -translate-x-1/2"></div>
                             <span class="absolute -top-6 -translate-x-1/2 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded">สูงสุด</span>
                         </div>
+                        
                         <div class="absolute top-0 h-full flex items-center" style="left: ${scorePercent}%;">
                             <div class="w-1 h-10 bg-indigo-600 -translate-x-1/2"></div>
                             <span class="absolute -top-6 -translate-x-1/2 bg-indigo-600 text-white text-xs font-bold px-2 py-1 rounded">คุณ</span>
@@ -2564,7 +2599,8 @@
                     </div>
                     
                     <div class="flex justify-between text-xs text-gray-600 px-1">
-                        <span>0</span><span>${fullScore}</span>
+                        <span>0</span>
+                        <span>${fullScore}</span>
                     </div>
                     
                     <p class="text-sm font-bold text-blue-700 mt-6 mb-2">📊 สถิติ ${yearLabel}</p>
@@ -2679,7 +2715,7 @@
             if (preTestTotal <= threshold.low) {
                 switch(target) {
                     case 'EP': summaryText = "ผลคะแนนครั้งนี้ยังไม่ตามเป้า แต่เป็นโอกาสดีในการพัฒนา หากเสริมพื้นฐานและฝึกโจทย์ต่อเนื่อง เราเชื่อว่าน้องทำได้ ✨"; break;
-                    case 'GM': summaryText = "ผลคะแนนอาจยังไม่สะท้อนศักยภาพเต็มที่ แต่เป็นโอกาสดีในการเห็นจุดพัฒนา 😊 ลองทบทวนพื้นฐานและฝึกโจทย์วิเคราะห์ สู้ไปด้วยกันนะ 💪✨"; break;
+                    case 'GM': summaryText = "ผลคะแนนอาจยังไม่สะท้อนศักยภาพเต็มที่ แต่เป็นโอกาสดีในการเห็นจุดพัฒนา 😊"; break;
                     case 'SMTE': summaryText = "ผลคะแนนรอบนี้เป็นจุดเริ่มต้น น้องสามารถเสริมพื้นฐานและฝึกตีความโจทย์ ด้วยการทำแบบฝึกหัดสม่ำเสมอ เชื่อว่าน้องทำได้ดีแน่นอน 💪✨"; break;
                     default: summaryText = "คะแนนควรพัฒนา แนะนำทบทวนเนื้อหาแต่ละวิชาสม่ำเสมอ และทำแบบฝึกหัดเพิ่มค่ะ";
                 }
@@ -2695,7 +2731,9 @@
             return `<div class="mt-8 p-4 bg-blue-50 rounded-lg"><h4 class="text-lg font-bold text-blue-800 mb-2">สรุปผลการวิเคราะห์</h4><p class="text-gray-700 summary-text">${summaryText}</p></div>`;
         }
 
-        // ==================== PDF EXPORT ====================
+        // ============================================
+        // PDF Export
+        // ============================================
         window.exportAnalysisToPDF = () => {
             const activeTab = document.querySelector('.analysis-tab.active') || document.querySelector('.analysis-tab');
             if (!activeTab) { showMessage('กรุณาเลือกแท็บการวิเคราะห์ก่อนบันทึก PDF', 'error'); return; }
@@ -2866,7 +2904,7 @@
                         content += `<div class="box bg-blue" style="margin-top:20px;"><h4 style="color:#1e3a8a; margin:0 0 5px 0; font-size:16px;">สรุปผลการวิเคราะห์</h4><p style="margin:0; font-size:14px;">${summaryEl.textContent}</p></div>`;
                     }
                 
-                    content += `<div class="box bg-note" style="margin-top:15px;"><p style="margin:0; font-size:12px;"><strong>หมายเหตุ:</strong> การวิเคราะห์นี้เป็นการประเมินเบื้องต้นจากคะแนน Pre-test เท่านั้น</p></div>`;
+                    content += `<div class="box bg-note" style="margin-top:15px;"><p style="margin:0; font-size:12px;"><strong>หมายเหตุ:</strong> คะแนนส่วนสัมภาษณ์ของหลักสูตร EP ใช้ค่าเฉลี่ยจริงจากผลการสอบปี 2569 = <b>16.39 คะแนน</b> (กลุ่มตัวอย่าง 23 คน จากอันดับตัวจริง 60 คน | คะแนนเต็ม 20 คะแนน) | การวิเคราะห์นี้เป็นการประเมินเบื้องต้นจากคะแนน Pre-test เท่านั้น</p></div>`;
                 }
             }
 
@@ -2880,7 +2918,9 @@
             return content;
         }
 
-        // ==================== ADMIN FUNCTIONS ====================
+        // ============================================
+        // Admin Functions
+        // ============================================
         window.adminLogin = () => {
             const password = document.getElementById('admin-password').value;
             if (password === ADMIN_PASSWORD) {
@@ -3062,7 +3102,9 @@
             }
         };
 
-        // ==================== INIT ====================
+        // ============================================
+        // Init
+        // ============================================
         document.addEventListener('DOMContentLoaded', function() {
             switchView('form');
             testConnection();
