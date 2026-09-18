@@ -962,12 +962,11 @@
                         <p>เลือกปีที่ต้องการเปรียบเทียบได้จาก Dropdown ด้านล่าง</p>
                     </div>
                     
-                    <!-- 🆕 Info Box สำหรับ EP -->
                     <div class="bg-orange-50 border-l-4 border-orange-400 p-4 mb-6 text-orange-800 rounded-r-lg text-sm">
                         <h4 class="font-bold mb-2">
                             <i class="fas fa-info-circle mr-2"></i>หมายเหตุการคำนวณคะแนนหลักสูตร EP
                         </h4>
-                        <p>การวิเคราะห์หลักสูตร EP ใช้ <b>ค่าเฉลี่ยคะแนนสอบสัมภาษณ์ = 16.39 คะแนน</b></p>
+                        <p>การวิเคราะห์หลักสูตร EP ใช้ <b>ค่าเฉลี่ยคะแนนสอบสัมภาษณ์ = 16.39 คะแนน</b> (จากคะแนนเต็ม 20 คะแนน)</p>
                         <p class="text-xs mt-1 opacity-80">
                             📌 คำนวณจากผลการสอบจริงปี 2569 (กลุ่มตัวอย่าง 23 คน จากอันดับตัวจริง 60 คน)
                         </p>
@@ -1192,19 +1191,14 @@
         let currentComparisonYear = 'avg';
 
         // ============================================
-        // 📊 COMPARISON DATA - ปรับค่า EP ตาม interview 16.39
+        // 📊 COMPARISON DATA
+        // EP ปรับตาม interview 16.39 (ส่วนต่าง -3.61)
         // ============================================
-        // ส่วนต่าง = 20 - 16.39 = 3.61 คะแนน
-        
-        // ปี 2568 (ปรับ -3.61 สำหรับ EP)
         const comparisonData2024 = {
             'EP': { 
                 title: 'หลักสูตร EP (English Program)', 
-                max: 164.89,       // 168.50 - 3.61
-                avg: 136.28,       // 139.89 - 3.61
-                min: 115.56,       // 119.17 - 3.61
-                fullScore: 200, 
-                chanceThresholds: { high: 141.39, medium: 126.39 },  // 145/130 - 3.61
+                max: 164.89, avg: 136.28, min: 115.56, fullScore: 200, 
+                chanceThresholds: { high: 141.39, medium: 126.39 }, 
                 note: "คะแนนสัมภาษณ์ใช้ค่าเฉลี่ยจริงปี 2569 = 16.39 คะแนน (กลุ่มตัวอย่าง 23 คน จากอันดับตัวจริง 60 คน | เต็ม 20 คะแนน)" 
             },
             'SMTE': { 
@@ -1216,31 +1210,24 @@
             'GM': { 
                 title: 'หลักสูตร GM (Gifted Math)', 
                 max: 90.00, avg: 73.30, min: 66.00, fullScore: 110, 
-                chanceThresholds: { high: 75.00, medium: 68.00 }, 
-                note: "" 
+                chanceThresholds: { high: 75.00, medium: 68.00 }, note: "" 
             },
             'Normal_In': { 
                 title: 'หลักสูตรห้องเรียนปกติ (ในเขต)', 
                 max: 58.50, avg: 50.33, min: 41.00, fullScore: 100, 
-                chanceThresholds: { high: 53.00, medium: 45.00 }, 
-                note: "" 
+                chanceThresholds: { high: 53.00, medium: 45.00 }, note: "" 
             },
             'Normal_Out': { 
                 title: 'หลักสูตรห้องเรียนปกติ (นอกเขต)', 
                 max: 65.50, avg: 51.41, min: 44.00, fullScore: 100, 
-                chanceThresholds: { high: 54.00, medium: 47.00 }, 
-                note: "" 
+                chanceThresholds: { high: 54.00, medium: 47.00 }, note: "" 
             }
         };
 
-        // ปี 2569 (ปรับ -3.61 สำหรับ EP)
         const comparisonData2025 = {
             'EP': { 
                 title: 'หลักสูตร EP (English Program)', 
-                max: 149.89,       // 153.50 - 3.61
-                avg: 120.01,       // 123.62 - 3.61
-                min: 102.56,       // 106.17 - 3.61
-                fullScore: 200, 
+                max: 149.89, avg: 120.01, min: 102.56, fullScore: 200, 
                 chanceThresholds: { high: 134.50, medium: 111.00 }, 
                 note: "คะแนนสัมภาษณ์ใช้ค่าเฉลี่ยจริงปี 2569 = 16.39 คะแนน (กลุ่มตัวอย่าง 23 คน จากอันดับตัวจริง 60 คน | เต็ม 20 คะแนน)" 
             },
@@ -1265,12 +1252,10 @@
             'Normal_Out': { 
                 title: 'หลักสูตรห้องเรียนปกติ (นอกเขต)', 
                 max: 78.5, avg: 55.62, min: 46, fullScore: 100, 
-                chanceThresholds: { high: 58.00, medium: 50.00 }, 
-                note: "" 
+                chanceThresholds: { high: 58.00, medium: 50.00 }, note: "" 
             }
         };
 
-        // คำนวณค่าเฉลี่ย 2 ปี
         function getAverageComparisonData() {
             const avgData = {};
             const keys = ['EP', 'SMTE', 'GM', 'Normal_In', 'Normal_Out'];
@@ -1295,7 +1280,7 @@
         const averageComparisonData = getAverageComparisonData();
 
         // ============================================
-        // Utility Functions
+        // Utility
         // ============================================
         function getEntryYear(entry) {
             return entry.year || LEGACY_FALLBACK_YEAR;
@@ -1409,7 +1394,7 @@
                 updateMainStats(stats);
                 renderDashboardCharts(stats);
             } catch (error) {
-                console.error('Error rendering full dashboard:', error);
+                console.error('Error:', error);
                 showMessage('ไม่สามารถโหลดข้อมูลแดชบอร์ดได้', 'error');
             } finally {
                 document.getElementById('dashboard-loading-indicator').classList.add('hidden');
@@ -1438,15 +1423,13 @@
                 if (filters.year !== 'all' && entryYear != filters.year) return;
                 
                 const userGrade = userEntry.currentGrade;
-                const gradeMatch = (filters.grade === 'all' || userGrade === filters.grade);
-                if (!gradeMatch) return;
+                if (filters.grade !== 'all' && userGrade !== filters.grade) return;
                 
                 let userHasMatchingScore = false;
 
                 Object.entries(userEntry.scores || {}).forEach(([examTypeKey, examScore]) => {
                     const curriculum = examScore.curriculum || (examTypeKey.includes('special') ? 'Special' : 'Normal');
-                    const curriculumMatch = (filters.curriculum === 'all' || curriculum === filters.curriculum);
-                    if (!curriculumMatch) return;
+                    if (filters.curriculum !== 'all' && curriculum !== filters.curriculum) return;
 
                     userHasMatchingScore = true;
                     stats.scores.push(examScore.totalScore);
@@ -1543,7 +1526,7 @@
                 createScoreDistributionChart(stats.scores);
                 populateByGradeLevel(stats.byGrade);
             } catch (chartError) {
-                console.error("Chart rendering error:", chartError);
+                console.error("Chart error:", chartError);
             }
         }
 
@@ -1755,6 +1738,7 @@
             }
         }
 
+        // 🆕 วิทยาศาสตร์ Pre-test = 30 คะแนน (แก้จาก 60)
         function createScoreInputs(examType) {
             const container = document.getElementById('score-inputs-container');
             if (document.getElementById(`${examType}-score-section`)) return;
@@ -1818,20 +1802,53 @@
             document.getElementById(`${examType}-total-score`).textContent = total.toFixed(2);
         };
 
+        // 🆕 วิทยาศาสตร์ Pre-test = 30 คะแนน (แก้จาก 60)
         function getExamTypeData(examType) {
             const examTypes = {
-                'specialOnsite': { title: 'คะแนนห้องเรียนพิเศษ (On-site)', examType: 'On-site', curriculum: 'Special', subjects: [
-                    { id: 'math', name: 'คณิตศาสตร์', maxScore: 50 }, { id: 'science', name: 'วิทยาศาสตร์', maxScore: 60 }, { id: 'english', name: 'ภาษาอังกฤษ', maxScore: 30 }
-                ]},
-                'normalOnsite': { title: 'คะแนนห้องเรียนปกติ (On-site)', examType: 'On-site', curriculum: 'Normal', subjects: [
-                    { id: 'math', name: 'คณิตศาสตร์', maxScore: 30 }, { id: 'science', name: 'วิทยาศาสตร์', maxScore: 30 }, { id: 'english', name: 'ภาษาอังกฤษ', maxScore: 30 }, { id: 'thai', name: 'ภาษาไทย', maxScore: 30 }, { id: 'social', name: 'สังคมศึกษา', maxScore: 30 }
-                ]},
-                'specialOnline': { title: 'คะแนนห้องเรียนพิเศษ (Online)', examType: 'Online', curriculum: 'Special', subjects: [
-                    { id: 'math', name: 'คณิตศาสตร์', maxScore: 50 }, { id: 'science', name: 'วิทยาศาสตร์', maxScore: 60 }, { id: 'english', name: 'ภาษาอังกฤษ', maxScore: 30 }
-                ]},
-                'normalOnline': { title: 'คะแนนห้องเรียนปกติ (Online)', examType: 'Online', curriculum: 'Normal', subjects: [
-                    { id: 'math', name: 'คณิตศาสตร์', maxScore: 30 }, { id: 'science', name: 'วิทยาศาสตร์', maxScore: 30 }, { id: 'english', name: 'ภาษาอังกฤษ', maxScore: 30 }, { id: 'thai', name: 'ภาษาไทย', maxScore: 30 }, { id: 'social', name: 'สังคมศึกษา', maxScore: 30 }
-                ]}
+                'specialOnsite': { 
+                    title: 'คะแนนห้องเรียนพิเศษ (On-site)', 
+                    examType: 'On-site', 
+                    curriculum: 'Special', 
+                    subjects: [
+                        { id: 'math', name: 'คณิตศาสตร์', maxScore: 50 }, 
+                        { id: 'science', name: 'วิทยาศาสตร์', maxScore: 30 }, 
+                        { id: 'english', name: 'ภาษาอังกฤษ', maxScore: 30 }
+                    ]
+                },
+                'normalOnsite': { 
+                    title: 'คะแนนห้องเรียนปกติ (On-site)', 
+                    examType: 'On-site', 
+                    curriculum: 'Normal', 
+                    subjects: [
+                        { id: 'math', name: 'คณิตศาสตร์', maxScore: 30 }, 
+                        { id: 'science', name: 'วิทยาศาสตร์', maxScore: 30 }, 
+                        { id: 'english', name: 'ภาษาอังกฤษ', maxScore: 30 }, 
+                        { id: 'thai', name: 'ภาษาไทย', maxScore: 30 }, 
+                        { id: 'social', name: 'สังคมศึกษา', maxScore: 30 }
+                    ]
+                },
+                'specialOnline': { 
+                    title: 'คะแนนห้องเรียนพิเศษ (Online)', 
+                    examType: 'Online', 
+                    curriculum: 'Special', 
+                    subjects: [
+                        { id: 'math', name: 'คณิตศาสตร์', maxScore: 50 }, 
+                        { id: 'science', name: 'วิทยาศาสตร์', maxScore: 30 }, 
+                        { id: 'english', name: 'ภาษาอังกฤษ', maxScore: 30 }
+                    ]
+                },
+                'normalOnline': { 
+                    title: 'คะแนนห้องเรียนปกติ (Online)', 
+                    examType: 'Online', 
+                    curriculum: 'Normal', 
+                    subjects: [
+                        { id: 'math', name: 'คณิตศาสตร์', maxScore: 30 }, 
+                        { id: 'science', name: 'วิทยาศาสตร์', maxScore: 30 }, 
+                        { id: 'english', name: 'ภาษาอังกฤษ', maxScore: 30 }, 
+                        { id: 'thai', name: 'ภาษาไทย', maxScore: 30 }, 
+                        { id: 'social', name: 'สังคมศึกษา', maxScore: 30 }
+                    ]
+                }
             };
             return examTypes[examType];
         }
@@ -2410,6 +2427,7 @@
             if (activeContent) activeContent.classList.add('active');
         };
 
+        // 🆕 แก้ sciMax จาก 60 → 30
         function calculateRealExamScore(preTestScores, targetCurriculum, examType) {
             let projectedScore = 0;
             let projectedSubjects = {};
@@ -2422,7 +2440,7 @@
             const socialPre = preTestScores.social || 0;
             
             const mathMax = isSpecialForm ? 50 : 30;
-            const sciMax = isSpecialForm ? 60 : 30;
+            const sciMax = 30; // 🆕 วิทยาศาสตร์ Pre-test = 30 (ทั้งห้องพิเศษและปกติ)
             const engMax = 30;
             const thaiMax = 30;
             const socialMax = 30;
@@ -2432,7 +2450,7 @@
                     projectedSubjects.math = (mathPre / mathMax) * 50;
                     projectedSubjects.science = (sciPre / sciMax) * 50;
                     projectedSubjects.english = (engPre / engMax) * 80;
-                    projectedSubjects.interview = 16.39; // 🆕 ค่าเฉลี่ยจริงปี 2569
+                    projectedSubjects.interview = 16.39;
                     projectedScore = projectedSubjects.math + projectedSubjects.science + projectedSubjects.english + projectedSubjects.interview;
                     break;
                 case 'GM':
@@ -2482,11 +2500,12 @@
             const isSpecialForm = examType.includes('special');
             
             if (targetCurriculum === 'EP' || targetCurriculum === 'GM' || targetCurriculum === 'SMTE') {
-                if (preTestScores.math >= (isSpecialForm ? 40 : 25)) strengths.push('คณิตศาสตร์');
-                else if (preTestScores.math <= (isSpecialForm ? 25 : 15)) weaknesses.push('คณิตศาสตร์');
+                // วิทยาศาสตร์เต็ม 30 สำหรับห้องพิเศษ
+                if (preTestScores.math >= 40) strengths.push('คณิตศาสตร์');
+                else if (preTestScores.math <= 25) weaknesses.push('คณิตศาสตร์');
                 
-                if (preTestScores.science >= 40) strengths.push('วิทยาศาสตร์');
-                else if (preTestScores.science <= 24) weaknesses.push('วิทยาศาสตร์');
+                if (preTestScores.science >= 20) strengths.push('วิทยาศาสตร์');
+                else if (preTestScores.science <= 12) weaknesses.push('วิทยาศาสตร์');
                 
                 if (preTestScores.english >= 20) strengths.push('ภาษาอังกฤษ');
                 else if (preTestScores.english <= 12) weaknesses.push('ภาษาอังกฤษ');
@@ -2524,14 +2543,36 @@
             const chance = calculateAdmissionChance(projectedScore, stats);
             const analysis = analyzeStrengthsWeaknesses(currentScores, target, examType);
 
+            // 🆕 ตารางแบบละเอียด - แสดง Pre-test เต็ม / สอบจริงเต็ม
+            const isSpecialForm = examType.includes('special');
+            const mathMaxPre = isSpecialForm ? 50 : 30;
+            const sciMaxPre = 30; // 🆕 วิทยาศาสตร์ Pre-test = 30
+            const engMaxPre = 30;
+            const thaiMaxPre = 30;
+            const socialMaxPre = 30;
+            
             let subjectTableHTML = '<table class="subject-table"><thead><tr><th>วิชา</th><th>คะแนน Pre-test</th><th>คะแนนที่เทียบได้</th></tr></thead><tbody>';
             
-            if (projectedSubjects.math !== undefined) subjectTableHTML += `<tr><td>คณิตศาสตร์</td><td class="score-pretest">${currentScores.math.toFixed(2)}</td><td class="score-projected">${projectedSubjects.math.toFixed(2)}</td></tr>`;
-            if (projectedSubjects.science !== undefined) subjectTableHTML += `<tr><td>วิทยาศาสตร์</td><td class="score-pretest">${currentScores.science.toFixed(2)}</td><td class="score-projected">${projectedSubjects.science.toFixed(2)}</td></tr>`;
-            if (projectedSubjects.english !== undefined) subjectTableHTML += `<tr><td>ภาษาอังกฤษ</td><td class="score-pretest">${currentScores.english.toFixed(2)}</td><td class="score-projected">${projectedSubjects.english.toFixed(2)}</td></tr>`;
-            if (projectedSubjects.thai !== undefined) subjectTableHTML += `<tr><td>ภาษาไทย</td><td class="score-pretest">${currentScores.thai.toFixed(2)}</td><td class="score-projected">${projectedSubjects.thai.toFixed(2)}</td></tr>`;
-            if (projectedSubjects.social !== undefined) subjectTableHTML += `<tr><td>สังคมศึกษา</td><td class="score-pretest">${currentScores.social.toFixed(2)}</td><td class="score-projected">${projectedSubjects.social.toFixed(2)}</td></tr>`;
-            if (projectedSubjects.interview !== undefined) subjectTableHTML += `<tr><td>สัมภาษณ์ (เฉลี่ย 16.39)</td><td class="score-pretest">-</td><td class="score-projected">${projectedSubjects.interview.toFixed(2)}</td></tr>`;
+            if (projectedSubjects.math !== undefined) {
+                subjectTableHTML += `<tr><td>คณิตศาสตร์</td><td class="score-pretest">${currentScores.math.toFixed(2)} / ${mathMaxPre}</td><td class="score-projected">${projectedSubjects.math.toFixed(2)} / 50</td></tr>`;
+            }
+            if (projectedSubjects.science !== undefined) {
+                const sciRealMax = (target === 'Normal_In' || target === 'Normal_Out') ? 20 : 50;
+                subjectTableHTML += `<tr><td>วิทยาศาสตร์</td><td class="score-pretest">${currentScores.science.toFixed(2)} / ${sciMaxPre}</td><td class="score-projected">${projectedSubjects.science.toFixed(2)} / ${sciRealMax}</td></tr>`;
+            }
+            if (projectedSubjects.english !== undefined) {
+                const engRealMax = target === 'EP' ? 80 : target === 'GM' ? 10 : target === 'SMTE' ? 0 : 20;
+                subjectTableHTML += `<tr><td>ภาษาอังกฤษ</td><td class="score-pretest">${currentScores.english.toFixed(2)} / ${engMaxPre}</td><td class="score-projected">${projectedSubjects.english.toFixed(2)} / ${engRealMax}</td></tr>`;
+            }
+            if (projectedSubjects.thai !== undefined) {
+                subjectTableHTML += `<tr><td>ภาษาไทย</td><td class="score-pretest">${currentScores.thai.toFixed(2)} / ${thaiMaxPre}</td><td class="score-projected">${projectedSubjects.thai.toFixed(2)} / 20</td></tr>`;
+            }
+            if (projectedSubjects.social !== undefined) {
+                subjectTableHTML += `<tr><td>สังคมศึกษา</td><td class="score-pretest">${currentScores.social.toFixed(2)} / ${socialMaxPre}</td><td class="score-projected">${projectedSubjects.social.toFixed(2)} / 20</td></tr>`;
+            }
+            if (projectedSubjects.interview !== undefined) {
+                subjectTableHTML += `<tr><td>สัมภาษณ์ (ค่าเฉลี่ยปี 69)</td><td class="score-pretest">-</td><td class="score-projected">${projectedSubjects.interview.toFixed(2)} / 20</td></tr>`;
+            }
             subjectTableHTML += '</tbody></table>';
 
             const subjectAdviceTable = createSubjectAdviceTable(target, currentScores, examType);
@@ -2637,10 +2678,11 @@
         function createSubjectAdviceTable(target, preTestScores, examType) {
             const isSpecialForm = examType.includes('special');
             
+            // 🆕 ปรับเกณฑ์วิทยาศาสตร์ตามเต็ม 30
             const thresholds = {
-                'EP': { math: { low: isSpecialForm ? 25 : 15, medium: isSpecialForm ? 30 : 18, high: isSpecialForm ? 40 : 25 }, science: { low: 24, medium: 32, high: 40 }, english: { low: 12, medium: 16, high: 20 } },
-                'GM': { math: { low: isSpecialForm ? 25 : 15, medium: isSpecialForm ? 30 : 18, high: isSpecialForm ? 40 : 25 }, science: { low: 24, medium: 32, high: 40 }, english: { low: 12, medium: 16, high: 20 } },
-                'SMTE': { math: { low: isSpecialForm ? 25 : 15, medium: isSpecialForm ? 30 : 18, high: isSpecialForm ? 40 : 25 }, science: { low: 24, medium: 32, high: 40 } },
+                'EP': { math: { low: 25, medium: 30, high: 40 }, science: { low: 12, medium: 18, high: 24 }, english: { low: 12, medium: 16, high: 20 } },
+                'GM': { math: { low: 25, medium: 30, high: 40 }, science: { low: 12, medium: 18, high: 24 }, english: { low: 12, medium: 16, high: 20 } },
+                'SMTE': { math: { low: 25, medium: 30, high: 40 }, science: { low: 12, medium: 18, high: 24 } },
                 'Normal_In': { math: { low: 12, medium: 16, high: 20 }, science: { low: 12, medium: 16, high: 20 }, english: { low: 12, medium: 16, high: 20 }, thai: { low: 12, medium: 16, high: 20 }, social: { low: 12, medium: 16, high: 20 } },
                 'Normal_Out': { math: { low: 12, medium: 16, high: 20 }, science: { low: 12, medium: 16, high: 20 }, english: { low: 12, medium: 16, high: 20 }, thai: { low: 12, medium: 16, high: 20 }, social: { low: 12, medium: 16, high: 20 } }
             };
@@ -2716,7 +2758,7 @@
                 switch(target) {
                     case 'EP': summaryText = "ผลคะแนนครั้งนี้ยังไม่ตามเป้า แต่เป็นโอกาสดีในการพัฒนา หากเสริมพื้นฐานและฝึกโจทย์ต่อเนื่อง เราเชื่อว่าน้องทำได้ ✨"; break;
                     case 'GM': summaryText = "ผลคะแนนอาจยังไม่สะท้อนศักยภาพเต็มที่ แต่เป็นโอกาสดีในการเห็นจุดพัฒนา 😊"; break;
-                    case 'SMTE': summaryText = "ผลคะแนนรอบนี้เป็นจุดเริ่มต้น น้องสามารถเสริมพื้นฐานและฝึกตีความโจทย์ ด้วยการทำแบบฝึกหัดสม่ำเสมอ เชื่อว่าน้องทำได้ดีแน่นอน 💪✨"; break;
+                    case 'SMTE': summaryText = "ผลคะแนนรอบนี้เป็นจุดเริ่มต้น น้องสามารถเสริมพื้นฐานและฝึกตีความโจทย์ เชื่อว่าน้องทำได้ดีแน่นอน 💪✨"; break;
                     default: summaryText = "คะแนนควรพัฒนา แนะนำทบทวนเนื้อหาแต่ละวิชาสม่ำเสมอ และทำแบบฝึกหัดเพิ่มค่ะ";
                 }
             } else {
