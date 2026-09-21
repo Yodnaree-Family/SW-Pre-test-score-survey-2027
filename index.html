@@ -918,6 +918,20 @@
                             <option value="grade6">ประถมศึกษาปีที่ 6</option>
                         </select>
                     </div>
+                    <div class="filter-group">
+                        <label>🎯 ประเภทหลักสูตรเป้าหมาย</label>
+                        <select id="results-filter-target-type" class="input-field text-sm" onchange="updateTargetProgramOptions(); renderScoresTable();">
+                            <option value="all">ทั้งหมด</option>
+                            <option value="Special">ห้องเรียนพิเศษ</option>
+                            <option value="Normal">ห้องเรียนปกติ</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>📚 หลักสูตรเป้าหมาย</label>
+                        <select id="results-filter-target-program" class="input-field text-sm" onchange="renderScoresTable()">
+                            <option value="all">ทั้งหมด</option>
+                        </select>
+                    </div>
                 </div>
                 
                 <div id="loading-indicator" class="text-center py-6 sm:py-8">
@@ -1189,8 +1203,9 @@
         let currentDashboardYear = '2570';
         let currentAdminYear = 'all';
         let currentComparisonYear = 'avg';
-
-        // ============================================
+        let currentResultsTargetType = 'all';
+        let currentResultsTargetProgram = 'all';
+                // ============================================
         // 📊 COMPARISON DATA
         // EP ปรับตาม interview 16.39 (ส่วนต่าง -3.61)
         // ============================================
@@ -1314,7 +1329,13 @@
                 if (btn) btn.classList.add('active');
             }
             
-            if (view === 'results') fetchScoresFromFirebase(true, false);
+            if (view === 'results') {
+                fetchScoresFromFirebase(true, false);
+                const typeSelect = document.getElementById('results-filter-target-type');
+                if (typeSelect) {
+                    updateTargetProgramOptions();
+                }
+            }
             else if (view === 'analysis') renderAnalysis();
             else if (view === 'dashboard') renderFullDashboard();
             
@@ -2149,6 +2170,57 @@
         }
 
         // ============================================
+        // 🆕 Target Program Filter Helper
+        // ============================================
+        window.updateTargetProgramOptions = () => {
+            const typeSelect = document.getElementById('results-filter-target-type');
+            const programSelect = document.getElementById('results-filter-target-program');
+            if (!typeSelect || !programSelect) return;
+            
+            const selectedType = typeSelect.value;
+            currentResultsTargetType = selectedType;
+            
+            let options = '<option value="all">ทั้งหมด</option>';
+            
+            if (selectedType === 'Special') {
+                options += `
+                    <option value="EP">EP (English Program)</option>
+                    <option value="SMTE">SMTE</option>
+                    <option value="GM">GM (Gifted Math)</option>
+                `;
+            } else if (selectedType === 'Normal') {
+                options += `
+                    <option value="Normal_In">ในเขตพื้นที่บริการ</option>
+                    <option value="Normal_Out">นอกเขตพื้นที่บริการ</option>
+                `;
+            }
+            
+            programSelect.innerHTML = options;
+            currentResultsTargetProgram = 'all';
+        };
+
+        function getTargetBadges(userData) {
+            if (!userData) return '<span class="text-gray-400">-</span>';
+            
+            const targetLabels = {
+                'EP': 'EP', 'SMTE': 'SMTE', 'GM': 'GM',
+                'Normal_In': 'ในเขต', 'Normal_Out': 'นอกเขต'
+            };
+            
+            const badges = [];
+            
+            (userData.targetSpecial || []).forEach(t => {
+                badges.push(`<span class="inline-block px-2 py-0.5 text-xs font-semibold rounded-full bg-purple-100 text-purple-800 mr-1 mb-0.5">${targetLabels[t] || t}</span>`);
+            });
+            
+            (userData.targetNormal || []).forEach(t => {
+                badges.push(`<span class="inline-block px-2 py-0.5 text-xs font-semibold rounded-full bg-teal-100 text-teal-800 mr-1 mb-0.5">${targetLabels[t] || t}</span>`);
+            });
+            
+            return badges.length > 0 ? badges.join('') : '<span class="text-gray-400">-</span>';
+        }
+
+        // ============================================
         // Results Table
         // ============================================
         function renderScoresTable() {
@@ -2163,6 +2235,8 @@
             const curriculumFilter = document.getElementById('results-filter-curriculum').value;
             const gradeFilter = document.getElementById('results-filter-grade').value;
             const examTypeFilter = document.getElementById('results-filter-exam-type').value;
+            const targetTypeFilter = document.getElementById('results-filter-target-type').value;
+            const targetProgramFilter = document.getElementById('results-filter-target-program').value;
             const yearFilter = currentResultsYear;
             
             let allExamScores = [];
@@ -2175,12 +2249,15 @@
                     const examType = examScore.examType || (examTypeKey.includes('Online') ? 'Online' : 'On-site');
                     
                     allExamScores.push({
+                        recordId: score.id,
                         nickname: score.nickname,
                         currentGrade: score.currentGrade,
                         examType, curriculum,
                         rank: examScore.rank,
                         totalScore: examScore.totalScore,
                         year: entryYear,
+                        targetSpecial: score.targetSpecial || [],
+                        targetNormal: score.targetNormal || [],
                         scores: {
                             math: scoresData.math || 0,
                             science: scoresData.science || 0,
@@ -2197,7 +2274,25 @@
                 const curriculumMatch = (curriculumFilter === 'all') || (exam.curriculum === curriculumFilter);
                 const examTypeMatch = (examTypeFilter === 'all') || (exam.examType === examTypeFilter);
                 const yearMatch = (yearFilter === 'all') || (exam.year == yearFilter);
-                return gradeMatch && curriculumMatch && examTypeMatch && yearMatch;
+                
+                // 🆕 กรองตามเป้าหมายการสอบเข้า
+                let targetMatch = true;
+                if (targetTypeFilter !== 'all' || targetProgramFilter !== 'all') {
+                    const userTargets = [
+                        ...(exam.targetSpecial || []),
+                        ...(exam.targetNormal || [])
+                    ];
+                    
+                    if (targetProgramFilter !== 'all') {
+                        targetMatch = userTargets.includes(targetProgramFilter);
+                    } else if (targetTypeFilter === 'Special') {
+                        targetMatch = (exam.targetSpecial || []).length > 0;
+                    } else if (targetTypeFilter === 'Normal') {
+                        targetMatch = (exam.targetNormal || []).length > 0;
+                    }
+                }
+                
+                return gradeMatch && curriculumMatch && examTypeMatch && yearMatch && targetMatch;
             });
 
             filteredExamScores.sort((a, b) => {
@@ -2235,6 +2330,7 @@
                                 <th class="py-2 px-2 sm:py-3 sm:px-4">ปี</th>
                                 <th class="py-2 px-2 sm:py-3 sm:px-4">ระดับชั้น</th>
                                 <th class="py-2 px-2 sm:py-3 sm:px-4">ประเภทสอบ</th>
+                                <th class="py-2 px-2 sm:py-3 sm:px-4">🎯 เป้าหมาย</th>
                                 <th class="py-2 px-2 sm:py-3 sm:px-4 text-right">คะแนนรวม</th>
                                 <th class="py-2 px-2 sm:py-3 sm:px-4">คณิต</th>
                                 <th class="py-2 px-2 sm:py-3 sm:px-4">วิทย์</th>
@@ -2248,6 +2344,11 @@
             
             currentPageData.forEach((examScore) => {
                 const gradeText = getGradeText(examScore.currentGrade);
+                const targetBadges = getTargetBadges({
+                    targetSpecial: examScore.targetSpecial,
+                    targetNormal: examScore.targetNormal
+                });
+                
                 tableHTML += `
                     <tr class="bg-white border-b hover:bg-gray-50">
                         <td class="py-2 px-2 sm:py-3 sm:px-4 font-bold text-gray-900">${examScore.rank}</td>
@@ -2259,6 +2360,7 @@
                                 ${examScore.curriculum === 'Special' ? 'พิเศษ' : 'ปกติ'} ${examScore.examType}
                             </span>
                         </td>
+                        <td class="py-2 px-2 sm:py-3 sm:px-4">${targetBadges}</td>
                         <td class="py-2 px-2 sm:py-3 sm:px-4 text-right font-bold text-blue-600">${examScore.totalScore.toFixed(2)}</td>
                         <td class="py-2 px-2 sm:py-3 sm:px-4">${examScore.scores.math ? examScore.scores.math.toFixed(2) : '-'}</td>
                         <td class="py-2 px-2 sm:py-3 sm:px-4">${examScore.scores.science ? examScore.scores.science.toFixed(2) : '-'}</td>
@@ -2291,8 +2393,7 @@
             const map = { 'grade4': 'ป.4', 'grade5': 'ป.5', 'grade6': 'ป.6' };
             return map[gradeCode] || gradeCode;
         }
-
-        // ============================================
+                // ============================================
         // ANALYSIS FUNCTIONS
         // ============================================
         function renderAnalysis() {
